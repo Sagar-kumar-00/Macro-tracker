@@ -574,18 +574,18 @@ function App() {
   // Settings Page
   if (showSettings) {
     return (
-      <div style={{ maxWidth: '600px', margin: '0 auto', padding: '20px', fontFamily: 'system-ui, -apple-system, sans-serif' }}>
-        <h1 style={{ textAlign: 'center', color: '#333', marginBottom: '10px' }}>⚙️ Setup Your Profile</h1>
-        <p style={{ textAlign: 'center', color: '#666', marginBottom: '30px', fontSize: '14px' }}>
+      <div style={{ maxWidth: '600px', margin: '0 auto', padding: '20px', fontFamily: 'system-ui, -apple-system, sans-serif', backgroundColor: '#121212', minHeight: '100vh' }}>
+        <h1 style={{ textAlign: 'center', color: '#f5f5f5', marginBottom: '10px' }}>⚙️ Setup Your Profile</h1>
+        <p style={{ textAlign: 'center', color: '#b0b0b0', marginBottom: '30px', fontSize: '14px' }}>
           Calculate your personalized daily calorie goal
         </p>
         
-        <div style={{ backgroundColor: '#f5f5f5', padding: '25px', borderRadius: '12px', marginBottom: '20px' }}>
-          <h3 style={{ marginTop: 0, color: '#333', marginBottom: '20px' }}>Personal Information</h3>
+        <div style={{ backgroundColor: '#1e1e1e', padding: '25px', borderRadius: '12px', marginBottom: '20px', border: '1px solid #333' }}>
+          <h3 style={{ marginTop: 0, color: '#f5f5f5', marginBottom: '20px' }}>Personal Information</h3>
           
           {/* Age */}
           <div style={{ marginBottom: '15px' }}>
-            <label style={{ display: 'block', marginBottom: '6px', fontSize: '14px', fontWeight: '500', color: '#555' }}>
+            <label style={{ display: 'block', marginBottom: '6px', fontSize: '14px', fontWeight: '500', color: '#e0e0e0' }}>
               Age (years)
             </label>
             <input
@@ -593,13 +593,13 @@ function App() {
               value={userSettings.age}
               onChange={(e) => setUserSettings({...userSettings, age: e.target.value})}
               placeholder="e.g., 25"
-              style={{ width: '100%', padding: '10px', fontSize: '16px', border: '2px solid #ddd', borderRadius: '6px', boxSizing: 'border-box' }}
+              style={{ width: '100%', padding: '10px', fontSize: '16px', border: '2px solid #444', borderRadius: '6px', boxSizing: 'border-box', backgroundColor: '#2d2d2d', color: '#f5f5f5' }}
             />
           </div>
           
           {/* Height */}
           <div style={{ marginBottom: '15px' }}>
-            <label style={{ display: 'block', marginBottom: '6px', fontSize: '14px', fontWeight: '500', color: '#555' }}>
+            <label style={{ display: 'block', marginBottom: '6px', fontSize: '14px', fontWeight: '500', color: '#e0e0e0' }}>
               Height (cm)
             </label>
             <input
@@ -607,13 +607,13 @@ function App() {
               value={userSettings.height}
               onChange={(e) => setUserSettings({...userSettings, height: e.target.value})}
               placeholder="e.g., 175"
-              style={{ width: '100%', padding: '10px', fontSize: '16px', border: '2px solid #ddd', borderRadius: '6px', boxSizing: 'border-box' }}
+              style={{ width: '100%', padding: '10px', fontSize: '16px', border: '2px solid #444', borderRadius: '6px', boxSizing: 'border-box', backgroundColor: '#2d2d2d', color: '#f5f5f5' }}
             />
           </div>
           
           {/* Weight */}
           <div style={{ marginBottom: '15px' }}>
-            <label style={{ display: 'block', marginBottom: '6px', fontSize: '14px', fontWeight: '500', color: '#555' }}>
+            <label style={{ display: 'block', marginBottom: '6px', fontSize: '14px', fontWeight: '500', color: '#e0e0e0' }}>
               Weight (kg)
             </label>
             <input
@@ -621,19 +621,19 @@ function App() {
               value={userSettings.weight}
               onChange={(e) => setUserSettings({...userSettings, weight: e.target.value})}
               placeholder="e.g., 70"
-              style={{ width: '100%', padding: '10px', fontSize: '16px', border: '2px solid #ddd', borderRadius: '6px', boxSizing: 'border-box' }}
+              style={{ width: '100%', padding: '10px', fontSize: '16px', border: '2px solid #444', borderRadius: '6px', boxSizing: 'border-box', backgroundColor: '#2d2d2d', color: '#f5f5f5' }}
             />
           </div>
           
           {/* Gender */}
           <div style={{ marginBottom: '15px' }}>
-            <label style={{ display: 'block', marginBottom: '6px', fontSize: '14px', fontWeight: '500', color: '#555' }}>
+            <label style={{ display: 'block', marginBottom: '6px', fontSize: '14px', fontWeight: '500', color: '#e0e0e0' }}>
               Gender
             </label>
             <select
               value={userSettings.gender}
               onChange={(e) => setUserSettings({...userSettings, gender: e.target.value})}
-              style={{ width: '100%', padding: '10px', fontSize: '16px', border: '2px solid #ddd', borderRadius: '6px', boxSizing: 'border-box', backgroundColor: 'white', cursor: 'pointer' }}
+              style={{ width: '100%', padding: '10px', fontSize: '16px', border: '2px solid #444', borderRadius: '6px', boxSizing: 'border-box', backgroundColor: '#2d2d2d', color: '#f5f5f5', cursor: 'pointer' }}
             >
               <option value="male">Male</option>
               <option value="female">Female</option>
@@ -642,13 +642,13 @@ function App() {
           
           {/* Activity Level */}
           <div style={{ marginBottom: '15px' }}>
-            <label style={{ display: 'block', marginBottom: '6px', fontSize: '14px', fontWeight: '500', color: '#555' }}>
+            <label style={{ display: 'block', marginBottom: '6px', fontSize: '14px', fontWeight: '500', color: '#e0e0e0' }}>
               Activity Level
             </label>
             <select
               value={userSettings.activity}
               onChange={(e) => setUserSettings({...userSettings, activity: e.target.value})}
-              style={{ width: '100%', padding: '10px', fontSize: '16px', border: '2px solid #ddd', borderRadius: '6px', boxSizing: 'border-box', backgroundColor: 'white', cursor: 'pointer' }}
+              style={{ width: '100%', padding: '10px', fontSize: '16px', border: '2px solid #444', borderRadius: '6px', boxSizing: 'border-box', backgroundColor: '#2d2d2d', color: '#f5f5f5', cursor: 'pointer' }}
             >
               <option value="1.2">Sedentary (little/no exercise)</option>
               <option value="1.375">Light (1-3 days/week)</option>
@@ -660,13 +660,13 @@ function App() {
           
           {/* Goal */}
           <div style={{ marginBottom: '15px' }}>
-            <label style={{ display: 'block', marginBottom: '6px', fontSize: '14px', fontWeight: '500', color: '#555' }}>
+            <label style={{ display: 'block', marginBottom: '6px', fontSize: '14px', fontWeight: '500', color: '#e0e0e0' }}>
               Your Goal
             </label>
             <select
               value={userSettings.goal}
               onChange={(e) => setUserSettings({...userSettings, goal: e.target.value})}
-              style={{ width: '100%', padding: '10px', fontSize: '16px', border: '2px solid #ddd', borderRadius: '6px', boxSizing: 'border-box', backgroundColor: 'white', cursor: 'pointer' }}
+              style={{ width: '100%', padding: '10px', fontSize: '16px', border: '2px solid #444', borderRadius: '6px', boxSizing: 'border-box', backgroundColor: '#2d2d2d', color: '#f5f5f5', cursor: 'pointer' }}
             >
               <option value="lose">🔥 Lose Weight (2.2g protein/kg, 0.8g fat/kg)</option>
               <option value="maintain">⚖️ Maintain Weight (1.8g protein/kg, 1.0g fat/kg)</option>
@@ -684,16 +684,16 @@ function App() {
         
         {/* Calculated Results */}
         {calculatedMaintenance > 0 && (
-          <div style={{ backgroundColor: '#e8f5e9', padding: '25px', borderRadius: '12px', marginBottom: '20px', border: '2px solid #4CAF50' }}>
-            <h3 style={{ marginTop: 0, color: '#2e7d32', marginBottom: '15px' }}>✓ Maintenance Calories Calculated</h3>
+          <div style={{ backgroundColor: '#1a3a1a', padding: '25px', borderRadius: '12px', marginBottom: '20px', border: '2px solid #4CAF50' }}>
+            <h3 style={{ marginTop: 0, color: '#81c784', marginBottom: '15px' }}>✓ Maintenance Calories Calculated</h3>
             
-            <div style={{ backgroundColor: 'white', padding: '20px', borderRadius: '8px', marginBottom: '20px', textAlign: 'center' }}>
+            <div style={{ backgroundColor: '#2d2d2d', padding: '20px', borderRadius: '8px', marginBottom: '20px', textAlign: 'center', border: '1px solid #444' }}>
               <div style={{ fontSize: '48px', fontWeight: 'bold', color: '#4CAF50' }}>{calculatedMaintenance}</div>
-              <div style={{ fontSize: '14px', color: '#666', marginTop: '5px' }}>calories/day to maintain weight</div>
+              <div style={{ fontSize: '14px', color: '#b0b0b0', marginTop: '5px' }}>calories/day to maintain weight</div>
             </div>
             
             <div style={{ marginBottom: '15px' }}>
-              <label style={{ display: 'block', marginBottom: '10px', fontSize: '14px', fontWeight: '500', color: '#555' }}>
+              <label style={{ display: 'block', marginBottom: '10px', fontSize: '14px', fontWeight: '500', color: '#e0e0e0' }}>
                 Adjust Your Daily Goal:
               </label>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -703,9 +703,9 @@ function App() {
                 >
                   -50
                 </button>
-                <div style={{ flex: 1, textAlign: 'center', backgroundColor: 'white', padding: '12px', borderRadius: '6px', border: '2px solid #ddd' }}>
-                  <div style={{ fontSize: '28px', fontWeight: 'bold', color: '#333' }}>{dailyCalorieGoal}</div>
-                  <div style={{ fontSize: '12px', color: '#666', marginTop: '2px' }}>
+                <div style={{ flex: 1, textAlign: 'center', backgroundColor: '#2d2d2d', padding: '12px', borderRadius: '6px', border: '2px solid #444' }}>
+                  <div style={{ fontSize: '28px', fontWeight: 'bold', color: '#f5f5f5' }}>{dailyCalorieGoal}</div>
+                  <div style={{ fontSize: '12px', color: '#b0b0b0', marginTop: '2px' }}>
                     {dailyCalorieGoal < calculatedMaintenance && `(${calculatedMaintenance - dailyCalorieGoal} deficit)`}
                     {dailyCalorieGoal > calculatedMaintenance && `(+${dailyCalorieGoal - calculatedMaintenance} surplus)`}
                     {dailyCalorieGoal === calculatedMaintenance && '(maintenance)'}
@@ -718,14 +718,14 @@ function App() {
                   +50
                 </button>
               </div>
-              <div style={{ marginTop: '10px', fontSize: '12px', color: '#666', textAlign: 'center' }}>
+              <div style={{ marginTop: '10px', fontSize: '12px', color: '#b0b0b0', textAlign: 'center' }}>
                 💡 -500 cal/day = ~0.5kg/week weight loss | +500 cal/day = ~0.5kg/week weight gain
               </div>
             </div>
             
             {/* Macro Targets */}
-            <div style={{ backgroundColor: 'white', padding: '20px', borderRadius: '8px', marginBottom: '15px' }}>
-              <h4 style={{ margin: '0 0 15px 0', color: '#333', fontSize: '16px' }}>📊 Daily Macro Targets</h4>
+            <div style={{ backgroundColor: '#2d2d2d', padding: '20px', borderRadius: '8px', marginBottom: '15px', border: '1px solid #444' }}>
+              <h4 style={{ margin: '0 0 15px 0', color: '#f5f5f5', fontSize: '16px' }}>📊 Daily Macro Targets</h4>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '10px', textAlign: 'center' }}>
                 <div>
                   <div style={{ fontSize: '24px', fontWeight: 'bold', color: '#2196F3' }}>{macroGoals.protein}g</div>
@@ -756,47 +756,47 @@ function App() {
 
   // Main Food Logging Page
   return (
-    <div style={{ maxWidth: '600px', margin: '0 auto', padding: '20px', fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+    <div style={{ maxWidth: '600px', margin: '0 auto', padding: '20px', fontFamily: 'system-ui, -apple-system, sans-serif', backgroundColor: '#121212', minHeight: '100vh' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-        <h1 style={{ margin: 0, color: '#333' }}>Macro Tracker</h1>
+        <h1 style={{ margin: 0, color: '#f5f5f5' }}>Macro Tracker</h1>
         <button
           onClick={handleResetSettings}
-          style={{ padding: '6px 12px', fontSize: '12px', backgroundColor: '#999', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}
+          style={{ padding: '6px 12px', fontSize: '12px', backgroundColor: '#555', color: 'white', border: '1px solid #666', borderRadius: '4px', cursor: 'pointer' }}
         >
           ⚙️ Reset
         </button>
       </div>
       
       {/* Daily Calorie Tracker */}
-      <div style={{ backgroundColor: '#f0f8ff', padding: '20px', borderRadius: '8px', marginBottom: '20px', border: '2px solid #2196F3' }}>
+      <div style={{ backgroundColor: '#1a2332', padding: '20px', borderRadius: '8px', marginBottom: '20px', border: '2px solid #2196F3' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '15px', textAlign: 'center' }}>
           <div>
-            <div style={{ fontSize: '24px', fontWeight: 'bold', color: '#666' }}>{dailyCalorieGoal}</div>
-            <div style={{ fontSize: '12px', color: '#999', marginTop: '4px' }}>Goal</div>
+            <div style={{ fontSize: '24px', fontWeight: 'bold', color: '#90caf9' }}>{dailyCalorieGoal}</div>
+            <div style={{ fontSize: '12px', color: '#b0b0b0', marginTop: '4px' }}>Goal</div>
           </div>
           <div>
-            <div style={{ fontSize: '24px', fontWeight: 'bold', color: '#FF9800' }}>{todayTotalCalories}</div>
-            <div style={{ fontSize: '12px', color: '#999', marginTop: '4px' }}>Consumed</div>
+            <div style={{ fontSize: '24px', fontWeight: 'bold', color: '#ffb74d' }}>{todayTotalCalories}</div>
+            <div style={{ fontSize: '12px', color: '#b0b0b0', marginTop: '4px' }}>Consumed</div>
           </div>
           <div>
-            <div style={{ fontSize: '24px', fontWeight: 'bold', color: remainingCalories >= 0 ? '#4CAF50' : '#f44336' }}>{remainingCalories}</div>
-            <div style={{ fontSize: '12px', color: '#999', marginTop: '4px' }}>Remaining</div>
+            <div style={{ fontSize: '24px', fontWeight: 'bold', color: remainingCalories >= 0 ? '#81c784' : '#e57373' }}>{remainingCalories}</div>
+            <div style={{ fontSize: '12px', color: '#b0b0b0', marginTop: '4px' }}>Remaining</div>
           </div>
         </div>
       </div>
       
       {/* Macro Tracker */}
       {macroGoals.protein > 0 && (
-        <div style={{ backgroundColor: '#f5f5f5', padding: '20px', borderRadius: '8px', marginBottom: '20px' }}>
-          <h3 style={{ marginTop: 0, marginBottom: '15px', color: '#333', fontSize: '16px' }}>📊 Macros Today</h3>
+        <div style={{ backgroundColor: '#1e1e1e', padding: '20px', borderRadius: '8px', marginBottom: '20px', border: '1px solid #333' }}>
+          <h3 style={{ marginTop: 0, marginBottom: '15px', color: '#f5f5f5', fontSize: '16px' }}>📊 Macros Today</h3>
           
           {/* Protein */}
           <div style={{ marginBottom: '12px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px', fontSize: '14px' }}>
-              <span style={{ fontWeight: '500', color: '#2196F3' }}>Protein</span>
-              <span style={{ color: '#666' }}>{Math.round(todayTotalMacros.protein)}g / {macroGoals.protein}g</span>
+              <span style={{ fontWeight: '500', color: '#64b5f6' }}>Protein</span>
+              <span style={{ color: '#b0b0b0' }}>{Math.round(todayTotalMacros.protein)}g / {macroGoals.protein}g</span>
             </div>
-            <div style={{ width: '100%', height: '8px', backgroundColor: '#e0e0e0', borderRadius: '4px', overflow: 'hidden' }}>
+            <div style={{ width: '100%', height: '8px', backgroundColor: '#333', borderRadius: '4px', overflow: 'hidden' }}>
               <div style={{ 
                 width: `${Math.min(100, (todayTotalMacros.protein / macroGoals.protein) * 100)}%`, 
                 height: '100%', 
@@ -809,10 +809,10 @@ function App() {
           {/* Fat */}
           <div style={{ marginBottom: '12px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px', fontSize: '14px' }}>
-              <span style={{ fontWeight: '500', color: '#FF9800' }}>Fat</span>
-              <span style={{ color: '#666' }}>{Math.round(todayTotalMacros.fat)}g / {macroGoals.fat}g</span>
+              <span style={{ fontWeight: '500', color: '#ffb74d' }}>Fat</span>
+              <span style={{ color: '#b0b0b0' }}>{Math.round(todayTotalMacros.fat)}g / {macroGoals.fat}g</span>
             </div>
-            <div style={{ width: '100%', height: '8px', backgroundColor: '#e0e0e0', borderRadius: '4px', overflow: 'hidden' }}>
+            <div style={{ width: '100%', height: '8px', backgroundColor: '#333', borderRadius: '4px', overflow: 'hidden' }}>
               <div style={{ 
                 width: `${Math.min(100, (todayTotalMacros.fat / macroGoals.fat) * 100)}%`, 
                 height: '100%', 
@@ -825,10 +825,10 @@ function App() {
           {/* Carbs */}
           <div>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px', fontSize: '14px' }}>
-              <span style={{ fontWeight: '500', color: '#4CAF50' }}>Carbs</span>
-              <span style={{ color: '#666' }}>{Math.round(todayTotalMacros.carbs)}g / {macroGoals.carbs}g</span>
+              <span style={{ fontWeight: '500', color: '#81c784' }}>Carbs</span>
+              <span style={{ color: '#b0b0b0' }}>{Math.round(todayTotalMacros.carbs)}g / {macroGoals.carbs}g</span>
             </div>
-            <div style={{ width: '100%', height: '8px', backgroundColor: '#e0e0e0', borderRadius: '4px', overflow: 'hidden' }}>
+            <div style={{ width: '100%', height: '8px', backgroundColor: '#333', borderRadius: '4px', overflow: 'hidden' }}>
               <div style={{ 
                 width: `${Math.min(100, (todayTotalMacros.carbs / macroGoals.carbs) * 100)}%`, 
                 height: '100%', 
@@ -841,7 +841,7 @@ function App() {
       )}
 
       <form onSubmit={handleSubmit} style={{ marginBottom: '30px' }}>
-        <div style={{ backgroundColor: '#fff3cd', padding: '10px', borderRadius: '6px', marginBottom: '10px', fontSize: '13px', color: '#856404', border: '1px solid #ffeeba' }}>
+        <div style={{ backgroundColor: '#2a2416', padding: '10px', borderRadius: '6px', marginBottom: '10px', fontSize: '13px', color: '#ffb74d', border: '1px solid #5a4a2a' }}>
           💡 <strong>Tip:</strong> Type "5 eggs" or "100g chicken" to specify quantity, or just "eggs" to use the default below.
         </div>
         <input 
@@ -850,17 +850,17 @@ function App() {
           onChange={(e) => setInput(e.target.value)} 
           placeholder="Type: '2 eggs' or '100g chicken' (with quantity) OR just 'chicken' (uses dropdown)" 
           disabled={loading}
-          style={{ width: '100%', padding: '12px', fontSize: '16px', border: '2px solid #ddd', borderRadius: '8px', marginBottom: '10px', boxSizing: 'border-box' }} 
+          style={{ width: '100%', padding: '12px', fontSize: '16px', border: '2px solid #444', borderRadius: '8px', marginBottom: '10px', boxSizing: 'border-box', backgroundColor: '#2d2d2d', color: '#f5f5f5' }} 
         />
         <div style={{ display: 'flex', gap: '10px', alignItems: 'center', marginBottom: '10px' }}>
-          <label style={{ fontSize: '14px', color: '#666', whiteSpace: 'nowrap' }}>
+          <label style={{ fontSize: '14px', color: '#b0b0b0', whiteSpace: 'nowrap' }}>
             Default quantity (when not specified):
           </label>
           <select 
             value={quantityPreset} 
             onChange={(e) => setQuantityPreset(e.target.value)} 
             disabled={loading}
-            style={{ flex: 1, padding: '8px', fontSize: '14px', border: '1px solid #ddd', borderRadius: '6px', backgroundColor: 'white', cursor: 'pointer' }}
+            style={{ flex: 1, padding: '8px', fontSize: '14px', border: '1px solid #444', borderRadius: '6px', backgroundColor: '#2d2d2d', color: '#f5f5f5', cursor: 'pointer' }}
           >
             <optgroup label="Servings">
               <option value="1serving">1 serving</option>
@@ -896,34 +896,34 @@ function App() {
       </form>
 
       {result && (
-        <div style={{ backgroundColor: '#f5f5f5', padding: '20px', borderRadius: '8px', marginBottom: '30px' }}>
-          <h2 style={{ marginTop: 0, color: '#333' }}>✓ Meal Logged</h2>
+        <div style={{ backgroundColor: '#1e1e1e', padding: '20px', borderRadius: '8px', marginBottom: '30px', border: '1px solid #333' }}>
+          <h2 style={{ marginTop: 0, color: '#f5f5f5' }}>✓ Meal Logged</h2>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginBottom: '20px' }}>
             {[
-              { label: 'Calories', value: result.totals.calories, color: '#4CAF50' }, 
-              { label: 'Protein', value: result.totals.protein + 'g', color: '#2196F3' }, 
-              { label: 'Carbs', value: result.totals.carbs + 'g', color: '#FF9800' }, 
-              { label: 'Fats', value: result.totals.fats + 'g', color: '#E91E63' }
+              { label: 'Calories', value: result.totals.calories, color: '#81c784' }, 
+              { label: 'Protein', value: result.totals.protein + 'g', color: '#64b5f6' }, 
+              { label: 'Carbs', value: result.totals.carbs + 'g', color: '#ffb74d' }, 
+              { label: 'Fats', value: result.totals.fats + 'g', color: '#f06292' }
             ].map((item, i) => (
-              <div key={i} style={{ backgroundColor: 'white', padding: '15px', borderRadius: '8px', textAlign: 'center' }}>
+              <div key={i} style={{ backgroundColor: '#2d2d2d', padding: '15px', borderRadius: '8px', textAlign: 'center', border: '1px solid #444' }}>
                 <div style={{ fontSize: '24px', fontWeight: 'bold', color: item.color }}>{item.value}</div>
-                <div style={{ fontSize: '14px', color: '#666' }}>{item.label}</div>
+                <div style={{ fontSize: '14px', color: '#b0b0b0' }}>{item.label}</div>
               </div>
             ))}
           </div>
-          <h3 style={{ marginBottom: '10px', color: '#333' }}>Foods:</h3>
+          <h3 style={{ marginBottom: '10px', color: '#f5f5f5' }}>Foods:</h3>
           {result.foods.map((food, i) => (
-            <div key={i} style={{ backgroundColor: 'white', padding: '10px', borderRadius: '4px', marginBottom: '8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div key={i} style={{ backgroundColor: '#2d2d2d', padding: '10px', borderRadius: '4px', marginBottom: '8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', border: '1px solid #444' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-                <strong>{food.quantity}{food.unit} {food.name}</strong>
+                <strong style={{ color: '#f5f5f5' }}>{food.quantity}{food.unit} {food.name}</strong>
                 {food.usedDefault && (
-                  <span style={{ fontSize: '11px', backgroundColor: '#e3f2fd', color: '#1976d2', padding: '2px 6px', borderRadius: '3px' }}>
+                  <span style={{ fontSize: '11px', backgroundColor: '#1a2a3a', color: '#64b5f6', padding: '2px 6px', borderRadius: '3px', border: '1px solid #2196F3' }}>
                     used default
                   </span>
                 )}
-                {!food.found && <span style={{ color: 'red', marginLeft: '10px', fontSize: '12px' }}>Not found</span>}
+                {!food.found && <span style={{ color: '#e57373', marginLeft: '10px', fontSize: '12px' }}>Not found</span>}
               </div>
-              <div style={{ color: '#666' }}>{food.calories} cal</div>
+              <div style={{ color: '#b0b0b0' }}>{food.calories} cal</div>
             </div>
           ))}
         </div>
@@ -931,12 +931,12 @@ function App() {
 
       {history.length > 0 && (
         <div>
-          <h2 style={{ color: '#333' }}>History</h2>
+          <h2 style={{ color: '#f5f5f5' }}>History</h2>
           {history.map((meal, mealIndex) => (
-            <div key={meal.id} style={{ backgroundColor: '#f9f9f9', padding: '15px', borderRadius: '8px', marginBottom: '10px', border: '1px solid #eee' }}>
-              <div style={{ marginBottom: '8px', color: '#666', fontSize: '14px' }}>{new Date(meal.timestamp).toLocaleString()}</div>
-              <div style={{ marginBottom: '8px', fontStyle: 'italic' }}>"{meal.input}"</div>
-              <div style={{ display: 'flex', gap: '20px', fontSize: '14px', marginBottom: '12px' }}>
+            <div key={meal.id} style={{ backgroundColor: '#1e1e1e', padding: '15px', borderRadius: '8px', marginBottom: '10px', border: '1px solid #333' }}>
+              <div style={{ marginBottom: '8px', color: '#b0b0b0', fontSize: '14px' }}>{new Date(meal.timestamp).toLocaleString()}</div>
+              <div style={{ marginBottom: '8px', fontStyle: 'italic', color: '#e0e0e0' }}>"{meal.input}"</div>
+              <div style={{ display: 'flex', gap: '20px', fontSize: '14px', marginBottom: '12px', color: '#e0e0e0' }}>
                 <span><strong>{meal.totals.calories}</strong> cal</span>
                 <span><strong>{meal.totals.protein}g</strong> protein</span>
                 <span><strong>{meal.totals.carbs}g</strong> carbs</span>
@@ -944,10 +944,10 @@ function App() {
               </div>
               
               {/* Individual foods with edit/delete */}
-              <div style={{ marginTop: '10px', paddingTop: '10px', borderTop: '1px solid #ddd' }}>
-                <div style={{ fontSize: '12px', color: '#999', marginBottom: '8px' }}>Foods:</div>
+              <div style={{ marginTop: '10px', paddingTop: '10px', borderTop: '1px solid #444' }}>
+                <div style={{ fontSize: '12px', color: '#888', marginBottom: '8px' }}>Foods:</div>
                 {meal.foods.map((food, foodIndex) => (
-                  <div key={foodIndex} style={{ backgroundColor: 'white', padding: '8px', borderRadius: '4px', marginBottom: '6px' }}>
+                  <div key={foodIndex} style={{ backgroundColor: '#2d2d2d', padding: '8px', borderRadius: '4px', marginBottom: '6px', border: '1px solid #444' }}>
                     {editingMealIndex === mealIndex && editingFoodIndex === foodIndex ? (
                       <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap' }}>
                         <input 
@@ -956,12 +956,12 @@ function App() {
                           onChange={(e) => setEditQuantity(e.target.value)} 
                           min="0.1" 
                           step="0.1" 
-                          style={{ width: '70px', padding: '4px', fontSize: '13px', border: '1px solid #ddd', borderRadius: '4px' }} 
+                          style={{ width: '70px', padding: '4px', fontSize: '13px', border: '1px solid #444', borderRadius: '4px', backgroundColor: '#1a1a1a', color: '#f5f5f5' }} 
                         />
                         <select 
                           value={editUnit} 
                           onChange={(e) => setEditUnit(e.target.value)} 
-                          style={{ padding: '4px', fontSize: '13px', border: '1px solid #ddd', borderRadius: '4px' }}
+                          style={{ padding: '4px', fontSize: '13px', border: '1px solid #444', borderRadius: '4px', backgroundColor: '#1a1a1a', color: '#f5f5f5' }}
                         >
                           <option value="g">g</option>
                           <option value="kg">kg</option>
@@ -970,7 +970,7 @@ function App() {
                           <option value="scoop">scoop</option>
                           <option value="piece">piece</option>
                         </select>
-                        <span style={{ flex: '1', minWidth: '80px', fontSize: '13px' }}><strong>{food.name}</strong></span>
+                        <span style={{ flex: '1', minWidth: '80px', fontSize: '13px', color: '#f5f5f5' }}><strong>{food.name}</strong></span>
                         <button 
                           onClick={() => handleSaveEdit(mealIndex, foodIndex)} 
                           disabled={loading} 
@@ -980,7 +980,7 @@ function App() {
                         </button>
                         <button 
                           onClick={handleCancelEdit} 
-                          style={{ padding: '4px 8px', fontSize: '12px', backgroundColor: '#999', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}
+                          style={{ padding: '4px 8px', fontSize: '12px', backgroundColor: '#555', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}
                         >
                           Cancel
                         </button>
@@ -988,16 +988,16 @@ function App() {
                     ) : (
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '13px' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
-                          <strong>{food.quantity}{food.unit} {food.name}</strong>
+                          <strong style={{ color: '#f5f5f5' }}>{food.quantity}{food.unit} {food.name}</strong>
                           {food.usedDefault && (
-                            <span style={{ fontSize: '10px', backgroundColor: '#e3f2fd', color: '#1976d2', padding: '1px 4px', borderRadius: '2px' }}>
+                            <span style={{ fontSize: '10px', backgroundColor: '#1a2a3a', color: '#64b5f6', padding: '1px 4px', borderRadius: '2px', border: '1px solid #2196F3' }}>
                               default
                             </span>
                           )}
-                          {!food.found && <span style={{ color: 'red', marginLeft: '8px', fontSize: '11px' }}>Not found</span>}
+                          {!food.found && <span style={{ color: '#e57373', marginLeft: '8px', fontSize: '11px' }}>Not found</span>}
                         </div>
                         <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-                          <span style={{ color: '#666' }}>{food.calories} cal</span>
+                          <span style={{ color: '#b0b0b0' }}>{food.calories} cal</span>
                           <button 
                             onClick={() => handleEdit(mealIndex, foodIndex)} 
                             style={{ padding: '3px 6px', fontSize: '11px', backgroundColor: '#2196F3', color: 'white', border: 'none', borderRadius: '3px', cursor: 'pointer' }}
