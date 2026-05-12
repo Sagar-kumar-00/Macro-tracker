@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
+import Landing from './Landing'
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3001'
 const USDA_API_KEY = import.meta.env.VITE_USDA_API_KEY
@@ -251,6 +252,7 @@ function calculateNutrition(nutrition, quantity, unit, foodName = '') {
 }
 
 function App() {
+  const [showLanding, setShowLanding] = useState(true)
   const [input, setInput] = useState('')
   const [quantityPreset, setQuantityPreset] = useState('100g')
   const [result, setResult] = useState(null)
@@ -616,12 +618,22 @@ function App() {
   const remainingCalories = dailyCalorieGoal - todayTotalCalories
   const todayTotalMacros = getTodayTotalMacros()
 
+  // Handle landing page "Get Started"
+  const handleGetStarted = () => {
+    setShowLanding(false)
+  }
+
+  // Show landing page for first-time users
+  if (showLanding) {
+    return <Landing onGetStarted={handleGetStarted} />
+  }
+
   // Settings Page
   if (showSettings) {
     return (
       <div style={{ maxWidth: '600px', margin: '0 auto', padding: '20px', fontFamily: 'system-ui, -apple-system, sans-serif', backgroundColor: '#121212', minHeight: '100vh' }}>
-        <h1 style={{ textAlign: 'center', color: '#f5f5f5', marginBottom: '10px' }}>⚙️ Setup Your Profile</h1>
-        <p style={{ textAlign: 'center', color: '#b0b0b0', marginBottom: '30px', fontSize: '14px' }}>
+        <h1 style={{ textAlign: 'center', color: '#f5f5f5', marginBottom: '15px', lineHeight: '1.3' }}>⚙️ Setup Your Profile</h1>
+        <p style={{ textAlign: 'center', color: '#b0b0b0', marginBottom: '30px', fontSize: '14px', lineHeight: '1.6' }}>
           Calculate your personalized daily calorie goal
         </p>
         
