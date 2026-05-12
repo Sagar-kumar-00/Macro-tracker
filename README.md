@@ -1,196 +1,257 @@
-# 🥗 Macro Tracker
+# Macro Tracker POC
 
-A personalized calorie and macro tracker with BMR calculator, multi-API nutrition data, and automatic serving size conversion.
+A comprehensive macro and calorie tracking application with personalized nutrition goals, body weight-based macro calculations, and multi-tier API fallback system.
 
-## 🌟 Features
-
-### 📊 Personalized Nutrition Goals
-- **BMR Calculator** using Mifflin-St Jeor equation
-- Age, height, weight, gender, and activity level inputs
-- Goal-based macro targets:
-  - 🔥 **Lose Weight**: 2.2g protein/kg, 0.8g fat/kg
-  - ⚖️ **Maintain**: 1.8g protein/kg, 1.0g fat/kg
-  - 💪 **Gain Muscle**: 2.0g protein/kg, 0.8g fat/kg
-- Adjustable calorie goals (±50 increments)
-
-### 🍽️ Smart Food Logging
-- Natural language input: "5 eggs" or "100g chicken"
-- Multi-API fallback chain:
-  1. **FatSecret** (primary) - Auto-converts any serving size to 100g
-  2. **USDA FoodData Central** (fallback)
-  3. **Mock Database** (65+ foods including Indian items)
-- Automatic quantity detection with dropdown defaults
-- Edit/delete functionality in meal history
-
-### 📈 Real-Time Tracking
-- Daily calorie tracker (Goal / Consumed / Remaining)
-- Macro progress bars (Protein / Fat / Carbs)
-- Last 10 meals history with localStorage persistence
-- Color-coded indicators for goal adherence
-
-### 🌍 Indian Food Support
-- Paneer, roti, chapati, paratha, idli, dosa, samosa
-- Dal, chickpeas, and more common Indian foods
-
-## 🚀 Live Demo
-
-**Website**: [https://sagar-kumar-00.github.io/Macro-tracker/](https://sagar-kumar-00.github.io/Macro-tracker/)
-
-## 🛠️ Tech Stack
-
-- **Frontend**: React 19.2.5 + Vite 5.4.21
-- **Backend**: Express.js (OAuth2 proxy for FatSecret)
-- **APIs**: FatSecret Platform API, USDA FoodData Central
-- **Styling**: Inline CSS (no external frameworks)
-- **Storage**: localStorage for persistence
-- **Deployment**: GitHub Pages with GitHub Actions
-
-## 📦 Installation
-
-### Prerequisites
-- Node.js v20.18.1 or higher
-- npm
-
-### Setup
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/Sagar-kumar-00/Macro-tracker.git
-   cd Macro-tracker
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Configure API keys**
-   
-   Create a `.env` file in the root directory:
-   ```env
-   VITE_USDA_API_KEY=your_usda_api_key
-   FATSECRET_CLIENT_ID=your_fatsecret_client_id
-   FATSECRET_CLIENT_SECRET=your_fatsecret_client_secret
-   VITE_BACKEND_URL=http://localhost:3001
-   ```
-
-   **Get API Keys:**
-   - USDA: [https://fdc.nal.usda.gov/api-key-signup.html](https://fdc.nal.usda.gov/api-key-signup.html)
-   - FatSecret: [https://platform.fatsecret.com/api/](https://platform.fatsecret.com/api/)
-
-4. **Run the development servers**
-
-   Terminal 1 (Frontend):
-   ```bash
-   npm run dev
-   ```
-
-   Terminal 2 (Backend):
-   ```bash
-   npm run server
-   ```
-
-5. **Open in browser**
-   ```
-   http://localhost:5173
-   ```
-
-## 📝 Usage
-
-### First Time Setup
-1. Enter your age, height, weight, gender, and activity level
-2. Select your goal (lose/maintain/gain)
-3. Calculate maintenance calories
-4. Adjust with +50/-50 if needed
-5. Click "Save & Start Tracking"
-
-### Logging Food
-- **With quantity**: Type "5 eggs" or "100g chicken"
-- **Without quantity**: Type "eggs" and use dropdown (100g default)
-- **Supported units**: g, kg, servings, pieces, scoops
-
-### Viewing Progress
-- **Daily tracker** shows calories remaining
-- **Macro bars** show protein/fat/carbs progress
-- **History** shows last 10 meals with edit/delete options
-
-## 🚀 Deployment
-
-### Automatic Deployment
-Push to `main` branch triggers GitHub Actions workflow:
-```bash
-git add .
-git commit -m "Your message"
-git push origin main
-```
-
-The site auto-deploys to: `https://sagar-kumar-00.github.io/Macro-tracker/`
-
-### Manual Deployment
-```bash
-npm run deploy
-```
-
-## 📂 Project Structure
+## 📁 Project Structure
 
 ```
 macro-tracker-poc/
-├── .github/
-│   └── workflows/
-│       └── deploy.yml       # GitHub Actions workflow
-├── src/
-│   ├── App.jsx              # Main application logic
-│   ├── main.jsx             # React entry point
-│   └── index.css            # Global styles
-├── server.js                # Express backend for FatSecret OAuth2
-├── vite.config.js           # Vite configuration
-├── package.json             # Dependencies and scripts
-└── .env                     # API keys (not committed)
+├── client/              # Frontend (React + Vite)
+│   ├── src/
+│   │   ├── App.jsx      # Main application component
+│   │   ├── main.jsx     # React entry point
+│   │   └── assets/
+│   ├── public/
+│   ├── package.json     # Frontend dependencies
+│   ├── vite.config.js   # Vite configuration
+│   ├── .env             # Frontend environment variables
+│   └── .env.example
+│
+├── server/              # Backend (Express)
+│   ├── server.js        # Express server for FatSecret OAuth proxy
+│   ├── package.json     # Backend dependencies
+│   ├── .env             # Backend environment variables
+│   └── .env.example
+│
+├── package.json         # Root package.json for workspace management
+└── .github/workflows/deploy.yml  # GitHub Actions for deployment
 ```
 
-## 🔧 Scripts
+## ✨ Features
 
-- `npm run dev` - Start frontend dev server
-- `npm run server` - Start backend server
+### 🎯 Core Functionality
+- **Smart Food Parsing**: Supports multiple formats ("2 eggs", "100g chicken", "1 cup rice")
+- **Multi-Tier API Fallback**: FatSecret API → USDA FoodData Central → Mock Database (70+ foods)
+- **Unit Conversion**: Automatic handling of grams, kg, cups, servings, pieces, scoops
+- **Indian Food Support**: Extensive database of Indian foods (paneer, roti, dal, dosa, etc.)
+
+### 📊 Personalized Nutrition
+- **BMR Calculator**: Mifflin-St Jeor equation with activity multipliers
+- **Body Weight-Based Macros**: 
+  - Weight Loss: 2.2g protein/kg, 0.8g fat/kg
+  - Maintenance: 1.8g protein/kg, 1.0g fat/kg
+  - Muscle Gain: 2.0g protein/kg, 0.8g fat/kg
+- **Goal-Based Calorie Adjustment**: ±50 cal increments
+- **Two-Page Flow**: Settings setup → Food logging
+
+### 📱 User Experience
+- **Dark Theme**: Optimized for mobile viewing
+- **Daily Tracking**: Calorie goal, consumed, remaining
+- **Macro Progress Bars**: Visual protein/fat/carbs tracking
+- **Edit/Delete History**: Full CRUD operations on logged meals
+- **Auto-Scroll**: Smooth navigation to results
+- **Input Validation**: Age (1-120), Height (50-300cm), Weight (20-500kg)
+- **localStorage Persistence**: Last 10 meals saved locally
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js 20+ installed
+- npm or yarn package manager
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/Sagar-kumar-00/Macro-tracker.git
+cd Macro-tracker
+```
+
+### 2. Install Dependencies
+
+#### Option A: Install Everything at Once
+```bash
+npm install
+npm run install:all
+```
+
+#### Option B: Install Separately
+```bash
+# Frontend
+cd client
+npm install
+
+# Backend
+cd ../server
+npm install
+```
+
+### 3. Configure Environment Variables
+
+#### Client (.env in `client/` directory)
+```env
+VITE_USDA_API_KEY=your_usda_api_key_here
+VITE_BACKEND_URL=http://localhost:3001
+```
+
+#### Server (.env in `server/` directory)
+```env
+FATSECRET_CLIENT_ID=your_fatsecret_client_id
+FATSECRET_CLIENT_SECRET=your_fatsecret_client_secret
+PORT=3001
+```
+
+**Get API Keys:**
+- **USDA API**: https://fdc.nal.usda.gov/api-key-signup.html
+- **FatSecret API**: https://platform.fatsecret.com/api/ (Free tier with IP whitelist)
+
+### 4. Run Development Servers
+
+#### Option A: Run Both Concurrently (Recommended)
+```bash
+npm run dev
+```
+
+#### Option B: Run Separately
+```bash
+# Terminal 1: Backend
+cd server
+npm start
+
+# Terminal 2: Frontend
+cd client
+npm run dev
+```
+
+Frontend will be available at: http://localhost:5173  
+Backend will be running at: http://localhost:3001
+
+## 📦 Deployment
+
+### Frontend (GitHub Pages)
+The frontend is automatically deployed to GitHub Pages on every push to `main`:
+
+```bash
+cd client
+npm run build
+npm run deploy
+```
+
+**Live Demo**: https://sagar-kumar-00.github.io/Macro-tracker/
+
+### Backend Deployment Options
+
+#### Option 1: Render (Recommended)
+1. Create a new Web Service on [Render](https://render.com/)
+2. Connect your GitHub repository
+3. Set Root Directory: `server`
+4. Build Command: `npm install`
+5. Start Command: `npm start`
+6. Add environment variables (FATSECRET_CLIENT_ID, FATSECRET_CLIENT_SECRET)
+
+#### Option 2: Railway
+1. Create a new project on [Railway](https://railway.app/)
+2. Connect your GitHub repository
+3. Set Root Directory: `server`
+4. Railway will auto-detect and deploy
+
+#### Option 3: Vercel Serverless
+1. Create `server/vercel.json`:
+```json
+{
+  "version": 2,
+  "builds": [{ "src": "server.js", "use": "@vercel/node" }],
+  "routes": [{ "src": "/(.*)", "dest": "/server.js" }]
+}
+```
+2. Deploy: `vercel --prod`
+
+### Update Frontend with Deployed Backend URL
+After deploying the backend, update `client/.env`:
+```env
+VITE_BACKEND_URL=https://your-backend-url.com
+```
+
+Then rebuild and redeploy the frontend.
+
+## 🛠️ Tech Stack
+
+### Frontend
+- **React 19.2.5**: UI framework
+- **Vite 5.4.21**: Build tool and dev server
+- **Axios**: HTTP client for API calls
+- **localStorage**: Client-side data persistence
+
+### Backend
+- **Express 4.21.2**: Web server framework
+- **Axios**: HTTP client for external APIs
+- **CORS**: Cross-origin resource sharing
+- **dotenv**: Environment variable management
+
+### APIs
+- **FatSecret Platform API**: Primary nutrition data (foods.search/v1, free tier)
+- **USDA FoodData Central**: Fallback nutrition data (1000 req/hour)
+- **Mock Database**: Final fallback with 70+ foods
+
+## 📊 API Priority Chain
+
+1. **FatSecret** (Primary): Via Express backend with OAuth2
+   - Pros: Comprehensive database, accurate data
+   - Cons: Requires backend proxy, IP whitelist for free tier
+   
+2. **USDA FoodData Central** (Fallback): Direct API calls
+   - Pros: Free, reliable, no authentication required
+   - Cons: US-focused, limited Indian foods
+   
+3. **Mock Database** (Final Fallback): Hardcoded 70+ foods
+   - Pros: Always available, instant response
+   - Cons: Limited coverage, requires manual updates
+
+## 📝 Scripts Reference
+
+### Root Level
+- `npm run install:all` - Install all dependencies
+- `npm run dev` - Run both servers concurrently
+- `npm run dev:client` - Run frontend only
+- `npm run dev:server` - Run backend only
+- `npm run build:client` - Build frontend for production
+- `npm run deploy:client` - Deploy frontend to GitHub Pages
+
+### Client
+- `npm run dev` - Start Vite dev server (port 5173)
 - `npm run build` - Build for production
-- `npm run deploy` - Deploy to GitHub Pages
 - `npm run preview` - Preview production build
+- `npm run deploy` - Deploy to GitHub Pages
 
-## 🌐 API Priority Chain
+### Server
+- `npm start` - Start Express server (port 3001)
+- `npm run dev` - Start Express server (same as start)
 
-1. **FatSecret** → Returns nutrition data, auto-normalizes serving sizes
-2. **USDA** → Fallback for US foods, returns per-100g data
-3. **Mock DB** → Final fallback with 65+ foods
+## 🐛 Troubleshooting
 
-## 🔐 Environment Variables
+### Frontend Not Finding Backend
+- Ensure `VITE_BACKEND_URL` in `client/.env` is correct
+- Check if backend server is running
+- Verify CORS is enabled in server
 
-| Variable | Description |
-|----------|-------------|
-| `VITE_USDA_API_KEY` | USDA FoodData Central API key |
-| `FATSECRET_CLIENT_ID` | FatSecret OAuth2 Client ID |
-| `FATSECRET_CLIENT_SECRET` | FatSecret OAuth2 Client Secret |
-| `VITE_BACKEND_URL` | Backend server URL (default: http://localhost:3001) |
+### FatSecret API Errors
+- Verify IP is whitelisted in FatSecret dashboard
+- Check `FATSECRET_CLIENT_ID` and `FATSECRET_CLIENT_SECRET` in `server/.env`
+- Ensure you're using `basic` scope (not `premier` or `nlp`)
 
-## 🤝 Contributing
+### USDA API Errors
+- Verify `VITE_USDA_API_KEY` in `client/.env`
+- Check API rate limits (1000 requests/hour)
 
-Contributions welcome! Please:
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit changes (`git commit -m 'Add amazing feature'`)
-4. Push to branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+### Build Errors
+- Delete `node_modules` in both client and server
+- Delete `package-lock.json` files
+- Run `npm run install:all` again
 
 ## 📄 License
 
-This project is open source and available under the MIT License.
+MIT License - feel free to use this project for your own purposes!
 
-## 👨‍💻 Author
+## 👤 Author
 
-**Sagar Kumar**
+Sagar Kumar
 - GitHub: [@Sagar-kumar-00](https://github.com/Sagar-kumar-00)
-
-## 🙏 Acknowledgments
-
-- FatSecret Platform API for nutrition data
-- USDA FoodData Central for comprehensive food database
-- React and Vite for amazing developer experience
+- Repository: [Macro-tracker](https://github.com/Sagar-kumar-00/Macro-tracker)

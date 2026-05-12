@@ -39,6 +39,11 @@ const servingSizeMap = {
   'idli': 0.3,       // 1 idli = ~30g
   'dosa': 0.8,       // 1 dosa = ~80g
   'samosa': 0.5,     // 1 samosa = ~50g
+  'coffee': 2.4,     // 1 cup = ~240ml
+  'tea': 2.4,        // 1 cup = ~240ml
+  'black coffee': 2.4,
+  'green tea': 2.4,
+  'black tea': 2.4
 }
 
 function preprocessFoodName(foodName) {
@@ -115,7 +120,12 @@ const mockNutritionDB = {
   'oil': { calories: 884, protein: 0, carbs: 0, fats: 100 },
   'cheese': { calories: 402, protein: 25, carbs: 1.3, fats: 33 },
   'pizza': { calories: 266, protein: 11, carbs: 33, fats: 10 },
-  'burger': { calories: 295, protein: 17, carbs: 28, fats: 13 }
+  'burger': { calories: 295, protein: 17, carbs: 28, fats: 13 },
+  'coffee': { calories: 2, protein: 0.3, carbs: 0, fats: 0 },
+  'black coffee': { calories: 2, protein: 0.3, carbs: 0, fats: 0 },
+  'tea': { calories: 1, protein: 0, carbs: 0.3, fats: 0 },
+  'green tea': { calories: 1, protein: 0, carbs: 0, fats: 0 },
+  'black tea': { calories: 1, protein: 0, carbs: 0.3, fats: 0 }
 }
 
 function parseFood(text) {
