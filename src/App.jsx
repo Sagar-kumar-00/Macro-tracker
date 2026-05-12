@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3001'
@@ -265,6 +265,9 @@ function App() {
   const [calculatedMaintenance, setCalculatedMaintenance] = useState(0)
   const [macroGoals, setMacroGoals] = useState({ protein: 0, fat: 0, carbs: 0 })
   
+  // Ref for auto-scrolling to results
+  const resultsRef = useRef(null)
+  
   useEffect(() => {
     const saved = localStorage.getItem('mealHistory')
     if (saved) { try { setHistory(JSON.parse(saved)) } catch (e) { console.error(e) } }
@@ -357,6 +360,33 @@ function App() {
   }
   
   const handleCalculateMaintenance = () => {
+    // Validation
+    const { age, height, weight } = userSettings
+    
+    if (!age || !height || !weight) {
+      alert('⚠️ Please fill in all fields (Age, Height, Weight)')
+      return
+    }
+    
+    const ageNum = parseFloat(age)
+    const heightNum = parseFloat(height)
+    const weightNum = parseFloat(weight)
+    
+    if (isNaN(ageNum) || ageNum <= 0 || ageNum > 120) {
+      alert('⚠️ Please enter a valid age (1-120 years)')
+      return
+    }
+    
+    if (isNaN(heightNum) || heightNum < 50 || heightNum > 300) {
+      alert('⚠️ Please enter a valid height (50-300 cm)')
+      return
+    }
+    
+    if (isNaN(weightNum) || weightNum < 20 || weightNum > 500) {
+      alert('⚠️ Please enter a valid weight (20-500 kg)')
+      return
+    }
+    
     const maintenance = calculateMaintenance()
     if (maintenance > 0) {
       setCalculatedMaintenance(maintenance)
@@ -374,6 +404,11 @@ function App() {
       // Calculate macro targets
       const macros = calculateMacroTargets(goalCalories, userSettings.goal, userSettings.weight)
       setMacroGoals(macros)
+      
+      // Scroll to results after state updates
+      setTimeout(() => {
+        resultsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }, 100)
     } else {
       alert('Please fill in all fields correctly')
     }
@@ -586,13 +621,16 @@ function App() {
           {/* Age */}
           <div style={{ marginBottom: '15px' }}>
             <label style={{ display: 'block', marginBottom: '6px', fontSize: '14px', fontWeight: '500', color: '#e0e0e0' }}>
-              Age (years)
+              Age (years) <span style={{ color: '#f44336' }}>*</span>
             </label>
             <input
               type="number"
               value={userSettings.age}
               onChange={(e) => setUserSettings({...userSettings, age: e.target.value})}
               placeholder="e.g., 25"
+              min="1"
+              max="120"
+              required
               style={{ width: '100%', padding: '10px', fontSize: '16px', border: '2px solid #444', borderRadius: '6px', boxSizing: 'border-box', backgroundColor: '#2d2d2d', color: '#f5f5f5' }}
             />
           </div>
@@ -600,13 +638,16 @@ function App() {
           {/* Height */}
           <div style={{ marginBottom: '15px' }}>
             <label style={{ display: 'block', marginBottom: '6px', fontSize: '14px', fontWeight: '500', color: '#e0e0e0' }}>
-              Height (cm)
+              Height (cm) <span style={{ color: '#f44336' }}>*</span>
             </label>
             <input
               type="number"
               value={userSettings.height}
               onChange={(e) => setUserSettings({...userSettings, height: e.target.value})}
               placeholder="e.g., 175"
+              min="50"
+              max="300"
+              required
               style={{ width: '100%', padding: '10px', fontSize: '16px', border: '2px solid #444', borderRadius: '6px', boxSizing: 'border-box', backgroundColor: '#2d2d2d', color: '#f5f5f5' }}
             />
           </div>
@@ -614,13 +655,16 @@ function App() {
           {/* Weight */}
           <div style={{ marginBottom: '15px' }}>
             <label style={{ display: 'block', marginBottom: '6px', fontSize: '14px', fontWeight: '500', color: '#e0e0e0' }}>
-              Weight (kg)
+              Weight (kg) <span style={{ color: '#f44336' }}>*</span>
             </label>
             <input
               type="number"
               value={userSettings.weight}
               onChange={(e) => setUserSettings({...userSettings, weight: e.target.value})}
               placeholder="e.g., 70"
+              min="20"
+              max="500"
+              required
               style={{ width: '100%', padding: '10px', fontSize: '16px', border: '2px solid #444', borderRadius: '6px', boxSizing: 'border-box', backgroundColor: '#2d2d2d', color: '#f5f5f5' }}
             />
           </div>
@@ -684,7 +728,7 @@ function App() {
         
         {/* Calculated Results */}
         {calculatedMaintenance > 0 && (
-          <div style={{ backgroundColor: '#1a3a1a', padding: '25px', borderRadius: '12px', marginBottom: '20px', border: '2px solid #4CAF50' }}>
+          <div ref={resultsRef} style={{ backgroundColor: '#1a3a1a', padding: '25px', borderRadius: '12px', marginBottom: '20px', border: '2px solid #4CAF50' }}>
             <h3 style={{ marginTop: 0, color: '#81c784', marginBottom: '15px' }}>✓ Maintenance Calories Calculated</h3>
             
             <div style={{ backgroundColor: '#2d2d2d', padding: '20px', borderRadius: '8px', marginBottom: '20px', textAlign: 'center', border: '1px solid #444' }}>
