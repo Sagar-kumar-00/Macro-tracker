@@ -631,258 +631,811 @@ function App() {
   // Settings Page
   if (showSettings) {
     return (
-      <div style={{ maxWidth: '600px', margin: '0 auto', padding: '20px', fontFamily: 'system-ui, -apple-system, sans-serif', backgroundColor: '#121212', minHeight: '100vh' }}>
-        <h1 style={{ textAlign: 'center', color: '#f5f5f5', marginBottom: '15px', lineHeight: '1.3' }}>⚙️ Setup Your Profile</h1>
-        <p style={{ textAlign: 'center', color: '#b0b0b0', marginBottom: '30px', fontSize: '14px', lineHeight: '1.6' }}>
-          Calculate your personalized daily calorie goal
-        </p>
+      <div style={{ 
+        minHeight: '100vh',
+        background: '#0a0e1a',
+        fontFamily: 'system-ui, -apple-system, sans-serif',
+        padding: '20px',
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        {/* Background Orbs */}
+        <div style={{ 
+          position: 'absolute', 
+          top: '-10%', 
+          right: '-5%', 
+          width: '400px', 
+          height: '400px', 
+          background: 'radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%)',
+          borderRadius: '50%',
+          filter: 'blur(60px)'
+        }}></div>
+        <div style={{ 
+          position: 'absolute', 
+          bottom: '-10%', 
+          left: '-5%', 
+          width: '500px', 
+          height: '500px', 
+          background: 'radial-gradient(circle, rgba(72, 187, 120, 0.08) 0%, transparent 70%)',
+          borderRadius: '50%',
+          filter: 'blur(70px)'
+        }}></div>
         
-        <div style={{ backgroundColor: '#1e1e1e', padding: '25px', borderRadius: '12px', marginBottom: '20px', border: '1px solid #333' }}>
-          <h3 style={{ marginTop: 0, color: '#f5f5f5', marginBottom: '20px' }}>Personal Information</h3>
-          
-          {/* Age */}
-          <div style={{ marginBottom: '15px' }}>
-            <label style={{ display: 'block', marginBottom: '6px', fontSize: '14px', fontWeight: '500', color: '#e0e0e0' }}>
-              Age (years) <span style={{ color: '#f44336' }}>*</span>
-            </label>
-            <input
-              type="number"
-              value={userSettings.age}
-              onChange={(e) => setUserSettings({...userSettings, age: e.target.value})}
-              placeholder="e.g., 25"
-              min="1"
-              max="120"
-              required
-              style={{ width: '100%', padding: '10px', fontSize: '16px', border: '2px solid #444', borderRadius: '6px', boxSizing: 'border-box', backgroundColor: '#2d2d2d', color: '#f5f5f5' }}
-            />
+        <div style={{ maxWidth: '600px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+          {/* Header */}
+          <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+            <div style={{ fontSize: '64px', marginBottom: '20px' }}>⚙️</div>
+            <h1 style={{ 
+              fontSize: '36px',
+              fontWeight: '800',
+              color: '#ffffff',
+              marginBottom: '12px',
+              lineHeight: '1.2',
+              letterSpacing: '-0.02em'
+            }}>
+              Setup Your Profile
+            </h1>
+            <p style={{ 
+              color: '#94a3b8',
+              fontSize: '16px',
+              lineHeight: '1.6',
+              maxWidth: '450px',
+              margin: '0 auto'
+            }}>
+              Calculate your personalized daily calorie goal based on your body metrics
+            </p>
           </div>
           
-          {/* Height */}
-          <div style={{ marginBottom: '15px' }}>
-            <label style={{ display: 'block', marginBottom: '6px', fontSize: '14px', fontWeight: '500', color: '#e0e0e0' }}>
-              Height (cm) <span style={{ color: '#f44336' }}>*</span>
-            </label>
-            <input
-              type="number"
-              value={userSettings.height}
-              onChange={(e) => setUserSettings({...userSettings, height: e.target.value})}
-              placeholder="e.g., 175"
-              min="50"
-              max="300"
-              required
-              style={{ width: '100%', padding: '10px', fontSize: '16px', border: '2px solid #444', borderRadius: '6px', boxSizing: 'border-box', backgroundColor: '#2d2d2d', color: '#f5f5f5' }}
-            />
-          </div>
-          
-          {/* Weight */}
-          <div style={{ marginBottom: '15px' }}>
-            <label style={{ display: 'block', marginBottom: '6px', fontSize: '14px', fontWeight: '500', color: '#e0e0e0' }}>
-              Weight (kg) <span style={{ color: '#f44336' }}>*</span>
-            </label>
-            <input
-              type="number"
-              value={userSettings.weight}
-              onChange={(e) => setUserSettings({...userSettings, weight: e.target.value})}
-              placeholder="e.g., 70"
-              min="20"
-              max="500"
-              required
-              style={{ width: '100%', padding: '10px', fontSize: '16px', border: '2px solid #444', borderRadius: '6px', boxSizing: 'border-box', backgroundColor: '#2d2d2d', color: '#f5f5f5' }}
-            />
-          </div>
-          
-          {/* Gender */}
-          <div style={{ marginBottom: '15px' }}>
-            <label style={{ display: 'block', marginBottom: '6px', fontSize: '14px', fontWeight: '500', color: '#e0e0e0' }}>
-              Gender
-            </label>
-            <select
-              value={userSettings.gender}
-              onChange={(e) => setUserSettings({...userSettings, gender: e.target.value})}
-              style={{ width: '100%', padding: '10px', fontSize: '16px', border: '2px solid #444', borderRadius: '6px', boxSizing: 'border-box', backgroundColor: '#2d2d2d', color: '#f5f5f5', cursor: 'pointer' }}
+          {/* Settings Card */}
+          <div style={{ 
+            background: 'rgba(30, 41, 59, 0.6)',
+            backdropFilter: 'blur(20px)',
+            padding: '35px',
+            borderRadius: '24px',
+            marginBottom: '20px',
+            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)',
+            border: '1px solid rgba(148, 163, 184, 0.1)'
+          }}>
+            <h3 style={{ 
+              marginTop: 0,
+              color: '#f1f5f9',
+              marginBottom: '30px',
+              fontSize: '20px',
+              fontWeight: '700',
+              letterSpacing: '-0.02em'
+            }}>
+              Personal Information
+            </h3>
+            
+            {/* Age */}
+            <div style={{ marginBottom: '24px' }}>
+              <label style={{ 
+                display: 'block',
+                marginBottom: '10px',
+                fontSize: '14px',
+                fontWeight: '600',
+                color: '#cbd5e1',
+                letterSpacing: '0.01em'
+              }}>
+                Age <span style={{ color: '#f87171' }}>*</span>
+              </label>
+              <input
+                type="number"
+                value={userSettings.age}
+                onChange={(e) => setUserSettings({...userSettings, age: e.target.value})}
+                placeholder="25"
+                min="1"
+                max="120"
+                required
+                style={{ 
+                  width: '100%',
+                  padding: '14px 18px',
+                  fontSize: '16px',
+                  border: '2px solid rgba(51, 65, 85, 0.6)',
+                  borderRadius: '12px',
+                  boxSizing: 'border-box',
+                  backgroundColor: 'rgba(15, 23, 42, 0.5)',
+                  color: '#f1f5f9',
+                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                  outline: 'none'
+                }}
+                onFocus={(e) => {
+                  e.target.style.borderColor = '#818cf8'
+                  e.target.style.backgroundColor = 'rgba(15, 23, 42, 0.8)'
+                  e.target.style.boxShadow = '0 0 0 4px rgba(129, 140, 248, 0.1)'
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = 'rgba(51, 65, 85, 0.6)'
+                  e.target.style.backgroundColor = 'rgba(15, 23, 42, 0.5)'
+                  e.target.style.boxShadow = 'none'
+                }}
+              />
+              <div style={{ fontSize: '12px', color: '#64748b', marginTop: '6px', fontWeight: '500' }}>
+                years
+              </div>
+            </div>
+            
+            {/* Height */}
+            <div style={{ marginBottom: '24px' }}>
+              <label style={{ 
+                display: 'block',
+                marginBottom: '10px',
+                fontSize: '14px',
+                fontWeight: '600',
+                color: '#cbd5e1',
+                letterSpacing: '0.01em'
+              }}>
+                Height <span style={{ color: '#f87171' }}>*</span>
+              </label>
+              <input
+                type="number"
+                value={userSettings.height}
+                onChange={(e) => setUserSettings({...userSettings, height: e.target.value})}
+                placeholder="175"
+                min="50"
+                max="300"
+                required
+                style={{ 
+                  width: '100%',
+                  padding: '14px 18px',
+                  fontSize: '16px',
+                  border: '2px solid rgba(51, 65, 85, 0.6)',
+                  borderRadius: '12px',
+                  boxSizing: 'border-box',
+                  backgroundColor: 'rgba(15, 23, 42, 0.5)',
+                  color: '#f1f5f9',
+                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                  outline: 'none'
+                }}
+                onFocus={(e) => {
+                  e.target.style.borderColor = '#818cf8'
+                  e.target.style.backgroundColor = 'rgba(15, 23, 42, 0.8)'
+                  e.target.style.boxShadow = '0 0 0 4px rgba(129, 140, 248, 0.1)'
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = 'rgba(51, 65, 85, 0.6)'
+                  e.target.style.backgroundColor = 'rgba(15, 23, 42, 0.5)'
+                  e.target.style.boxShadow = 'none'
+                }}
+              />
+              <div style={{ fontSize: '12px', color: '#64748b', marginTop: '6px', fontWeight: '500' }}>
+                centimeters
+              </div>
+            </div>
+            
+            {/* Weight */}
+            <div style={{ marginBottom: '24px' }}>
+              <label style={{ 
+                display: 'block',
+                marginBottom: '10px',
+                fontSize: '14px',
+                fontWeight: '600',
+                color: '#cbd5e1',
+                letterSpacing: '0.01em'
+              }}>
+                Weight <span style={{ color: '#f87171' }}>*</span>
+              </label>
+              <input
+                type="number"
+                value={userSettings.weight}
+                onChange={(e) => setUserSettings({...userSettings, weight: e.target.value})}
+                placeholder="70"
+                min="20"
+                max="500"
+                required
+                style={{ 
+                  width: '100%',
+                  padding: '14px 18px',
+                  fontSize: '16px',
+                  border: '2px solid rgba(51, 65, 85, 0.6)',
+                  borderRadius: '12px',
+                  boxSizing: 'border-box',
+                  backgroundColor: 'rgba(15, 23, 42, 0.5)',
+                  color: '#f1f5f9',
+                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                  outline: 'none'
+                }}
+                onFocus={(e) => {
+                  e.target.style.borderColor = '#818cf8'
+                  e.target.style.backgroundColor = 'rgba(15, 23, 42, 0.8)'
+                  e.target.style.boxShadow = '0 0 0 4px rgba(129, 140, 248, 0.1)'
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = 'rgba(51, 65, 85, 0.6)'
+                  e.target.style.backgroundColor = 'rgba(15, 23, 42, 0.5)'
+                  e.target.style.boxShadow = 'none'
+                }}
+              />
+              <div style={{ fontSize: '12px', color: '#64748b', marginTop: '6px', fontWeight: '500' }}>
+                kilograms
+              </div>
+            </div>
+            
+            {/* Gender */}
+            <div style={{ marginBottom: '24px' }}>
+              <label style={{ 
+                display: 'block',
+                marginBottom: '10px',
+                fontSize: '14px',
+                fontWeight: '600',
+                color: '#cbd5e1',
+                letterSpacing: '0.01em'
+              }}>
+                Gender
+              </label>
+              <select
+                value={userSettings.gender}
+                onChange={(e) => setUserSettings({...userSettings, gender: e.target.value})}
+                style={{ 
+                  width: '100%',
+                  padding: '14px 18px',
+                  fontSize: '16px',
+                  border: '2px solid rgba(51, 65, 85, 0.6)',
+                  borderRadius: '12px',
+                  boxSizing: 'border-box',
+                  backgroundColor: 'rgba(15, 23, 42, 0.5)',
+                  color: '#f1f5f9',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                  outline: 'none',
+                  appearance: 'none',
+                  backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'12\' height=\'8\' viewBox=\'0 0 12 8\' fill=\'none\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M1 1.5L6 6.5L11 1.5\' stroke=\'%2394a3b8\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'/%3E%3C/svg%3E")',
+                  backgroundRepeat: 'no-repeat',
+                  backgroundPosition: 'right 18px center',
+                  paddingRight: '45px'
+                }}
+                onFocus={(e) => {
+                  e.target.style.borderColor = '#818cf8'
+                  e.target.style.backgroundColor = 'rgba(15, 23, 42, 0.8)'
+                  e.target.style.boxShadow = '0 0 0 4px rgba(129, 140, 248, 0.1)'
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = 'rgba(51, 65, 85, 0.6)'
+                  e.target.style.backgroundColor = 'rgba(15, 23, 42, 0.5)'
+                  e.target.style.boxShadow = 'none'
+                }}
+              >
+                <option value="male" style={{ background: '#0f172a', color: '#f1f5f9' }}>Male</option>
+                <option value="female" style={{ background: '#0f172a', color: '#f1f5f9' }}>Female</option>
+              </select>
+            </div>
+            
+            {/* Activity Level */}
+            <div style={{ marginBottom: '24px' }}>
+              <label style={{ 
+                display: 'block',
+                marginBottom: '10px',
+                fontSize: '14px',
+                fontWeight: '600',
+                color: '#cbd5e1',
+                letterSpacing: '0.01em'
+              }}>
+                Activity Level
+              </label>
+              <select
+                value={userSettings.activity}
+                onChange={(e) => setUserSettings({...userSettings, activity: e.target.value})}
+                style={{ 
+                  width: '100%',
+                  padding: '14px 18px',
+                  fontSize: '16px',
+                  border: '2px solid rgba(51, 65, 85, 0.6)',
+                  borderRadius: '12px',
+                  boxSizing: 'border-box',
+                  backgroundColor: 'rgba(15, 23, 42, 0.5)',
+                  color: '#f1f5f9',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                  outline: 'none',
+                  appearance: 'none',
+                  backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'12\' height=\'8\' viewBox=\'0 0 12 8\' fill=\'none\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M1 1.5L6 6.5L11 1.5\' stroke=\'%2394a3b8\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'/%3E%3C/svg%3E")',
+                  backgroundRepeat: 'no-repeat',
+                  backgroundPosition: 'right 18px center',
+                  paddingRight: '45px'
+                }}
+                onFocus={(e) => {
+                  e.target.style.borderColor = '#818cf8'
+                  e.target.style.backgroundColor = 'rgba(15, 23, 42, 0.8)'
+                  e.target.style.boxShadow = '0 0 0 4px rgba(129, 140, 248, 0.1)'
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = 'rgba(51, 65, 85, 0.6)'
+                  e.target.style.backgroundColor = 'rgba(15, 23, 42, 0.5)'
+                  e.target.style.boxShadow = 'none'
+                }}
+              >
+                <option value="1.2" style={{ background: '#0f172a', color: '#f1f5f9' }}>Sedentary (little/no exercise)</option>
+                <option value="1.375" style={{ background: '#0f172a', color: '#f1f5f9' }}>Light (1-3 days/week)</option>
+                <option value="1.55" style={{ background: '#0f172a', color: '#f1f5f9' }}>Moderate (3-5 days/week)</option>
+                <option value="1.725" style={{ background: '#0f172a', color: '#f1f5f9' }}>Active (6-7 days/week)</option>
+                <option value="1.9" style={{ background: '#0f172a', color: '#f1f5f9' }}>Very Active (athlete/physical job)</option>
+              </select>
+            </div>
+            
+            {/* Goal */}
+            <div style={{ marginBottom: '24px' }}>
+              <label style={{ 
+                display: 'block',
+                marginBottom: '10px',
+                fontSize: '14px',
+                fontWeight: '600',
+                color: '#cbd5e1',
+                letterSpacing: '0.01em'
+              }}>
+                Your Goal
+              </label>
+              <select
+                value={userSettings.goal}
+                onChange={(e) => setUserSettings({...userSettings, goal: e.target.value})}
+                style={{ 
+                  width: '100%',
+                  padding: '14px 18px',
+                  fontSize: '16px',
+                  border: '2px solid rgba(51, 65, 85, 0.6)',
+                  borderRadius: '12px',
+                  boxSizing: 'border-box',
+                  backgroundColor: 'rgba(15, 23, 42, 0.5)',
+                  color: '#f1f5f9',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                  outline: 'none',
+                  appearance: 'none',
+                  backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'12\' height=\'8\' viewBox=\'0 0 12 8\' fill=\'none\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M1 1.5L6 6.5L11 1.5\' stroke=\'%2394a3b8\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'/%3E%3C/svg%3E")',
+                  backgroundRepeat: 'no-repeat',
+                  backgroundPosition: 'right 18px center',
+                  paddingRight: '45px'
+                }}
+                onFocus={(e) => {
+                  e.target.style.borderColor = '#818cf8'
+                  e.target.style.backgroundColor = 'rgba(15, 23, 42, 0.8)'
+                  e.target.style.boxShadow = '0 0 0 4px rgba(129, 140, 248, 0.1)'
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = 'rgba(51, 65, 85, 0.6)'
+                  e.target.style.backgroundColor = 'rgba(15, 23, 42, 0.5)'
+                  e.target.style.boxShadow = 'none'
+                }}
+              >
+                <option value="lose" style={{ background: '#0f172a', color: '#f1f5f9' }}>🔥 Lose Weight (2.2g protein/kg, 0.8g fat/kg)</option>
+                <option value="maintain" style={{ background: '#0f172a', color: '#f1f5f9' }}>⚖️ Maintain Weight (1.8g protein/kg, 1.0g fat/kg)</option>
+                <option value="gain" style={{ background: '#0f172a', color: '#f1f5f9' }}>💪 Gain Muscle (2.0g protein/kg, 0.8g fat/kg)</option>
+              </select>
+            </div>
+            
+            <button
+              onClick={handleCalculateMaintenance}
+              style={{ 
+                width: '100%',
+                padding: '16px',
+                fontSize: '17px',
+                fontWeight: '700',
+                color: 'white',
+                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                border: 'none',
+                borderRadius: '14px',
+                cursor: 'pointer',
+                marginTop: '10px',
+                boxShadow: '0 8px 24px rgba(102, 126, 234, 0.3)',
+                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                letterSpacing: '0.01em'
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.transform = 'translateY(-2px)'
+                e.target.style.boxShadow = '0 12px 32px rgba(102, 126, 234, 0.4)'
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.transform = 'translateY(0)'
+                e.target.style.boxShadow = '0 8px 24px rgba(102, 126, 234, 0.3)'
+              }}
             >
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-            </select>
+              Calculate Maintenance Calories
+            </button>
           </div>
-          
-          {/* Activity Level */}
-          <div style={{ marginBottom: '15px' }}>
-            <label style={{ display: 'block', marginBottom: '6px', fontSize: '14px', fontWeight: '500', color: '#e0e0e0' }}>
-              Activity Level
-            </label>
-            <select
-              value={userSettings.activity}
-              onChange={(e) => setUserSettings({...userSettings, activity: e.target.value})}
-              style={{ width: '100%', padding: '10px', fontSize: '16px', border: '2px solid #444', borderRadius: '6px', boxSizing: 'border-box', backgroundColor: '#2d2d2d', color: '#f5f5f5', cursor: 'pointer' }}
-            >
-              <option value="1.2">Sedentary (little/no exercise)</option>
-              <option value="1.375">Light (1-3 days/week)</option>
-              <option value="1.55">Moderate (3-5 days/week)</option>
-              <option value="1.725">Active (6-7 days/week)</option>
-              <option value="1.9">Very Active (athlete/physical job)</option>
-            </select>
-          </div>
-          
-          {/* Goal */}
-          <div style={{ marginBottom: '15px' }}>
-            <label style={{ display: 'block', marginBottom: '6px', fontSize: '14px', fontWeight: '500', color: '#e0e0e0' }}>
-              Your Goal
-            </label>
-            <select
-              value={userSettings.goal}
-              onChange={(e) => setUserSettings({...userSettings, goal: e.target.value})}
-              style={{ width: '100%', padding: '10px', fontSize: '16px', border: '2px solid #444', borderRadius: '6px', boxSizing: 'border-box', backgroundColor: '#2d2d2d', color: '#f5f5f5', cursor: 'pointer' }}
-            >
-              <option value="lose">🔥 Lose Weight (2.2g protein/kg, 0.8g fat/kg)</option>
-              <option value="maintain">⚖️ Maintain Weight (1.8g protein/kg, 1.0g fat/kg)</option>
-              <option value="gain">💪 Gain Muscle (2.0g protein/kg, 0.8g fat/kg)</option>
-            </select>
-          </div>
-          
-          <button
-            onClick={handleCalculateMaintenance}
-            style={{ width: '100%', padding: '12px', fontSize: '16px', fontWeight: 'bold', color: 'white', backgroundColor: '#2196F3', border: 'none', borderRadius: '8px', cursor: 'pointer', marginTop: '10px' }}
-          >
-            Calculate Maintenance Calories
-          </button>
-        </div>
         
         {/* Calculated Results */}
         {calculatedMaintenance > 0 && (
-          <div ref={resultsRef} style={{ backgroundColor: '#1a3a1a', padding: '25px', borderRadius: '12px', marginBottom: '20px', border: '2px solid #4CAF50' }}>
-            <h3 style={{ marginTop: 0, color: '#81c784', marginBottom: '15px' }}>✓ Maintenance Calories Calculated</h3>
+          <div ref={resultsRef} style={{ 
+            background: 'rgba(30, 41, 59, 0.6)', 
+            backdropFilter: 'blur(20px)',
+            padding: '35px', 
+            borderRadius: '24px', 
+            marginBottom: '20px', 
+            border: '1px solid rgba(148, 163, 184, 0.1)', 
+            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)' 
+          }}>
+            <h3 style={{ 
+              marginTop: 0, 
+              color: '#4ade80', 
+              marginBottom: '25px', 
+              fontSize: '20px', 
+              fontWeight: '700',
+              letterSpacing: '-0.02em'
+            }}>
+              ✓ Maintenance Calories Calculated
+            </h3>
             
-            <div style={{ backgroundColor: '#2d2d2d', padding: '20px', borderRadius: '8px', marginBottom: '20px', textAlign: 'center', border: '1px solid #444' }}>
-              <div style={{ fontSize: '48px', fontWeight: 'bold', color: '#4CAF50' }}>{calculatedMaintenance}</div>
-              <div style={{ fontSize: '14px', color: '#b0b0b0', marginTop: '5px' }}>calories/day to maintain weight</div>
+            <div style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', padding: '25px', borderRadius: '16px', marginBottom: '25px', textAlign: 'center' }}>
+              <div style={{ fontSize: '52px', fontWeight: '700', color: 'white' }}>{calculatedMaintenance}</div>
+              <div style={{ fontSize: '14px', color: 'rgba(255,255,255,0.9)', marginTop: '5px', fontWeight: '500' }}>calories/day to maintain weight</div>
             </div>
             
-            <div style={{ marginBottom: '15px' }}>
-              <label style={{ display: 'block', marginBottom: '10px', fontSize: '14px', fontWeight: '500', color: '#e0e0e0' }}>
+            <div style={{ marginBottom: '25px' }}>
+              <label style={{ 
+                display: 'block', 
+                marginBottom: '14px', 
+                fontSize: '15px', 
+                fontWeight: '700', 
+                color: '#cbd5e1',
+                letterSpacing: '-0.01em' 
+              }}>
                 Adjust Your Daily Goal:
               </label>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
                 <button
                   onClick={() => handleAdjustCalories(-50)}
-                  style={{ padding: '8px 16px', fontSize: '18px', fontWeight: 'bold', backgroundColor: '#f44336', color: 'white', border: 'none', borderRadius: '6px', cursor: 'pointer' }}
+                  style={{ 
+                    padding: '12px 20px', 
+                    fontSize: '20px', 
+                    fontWeight: '700', 
+                    background: 'linear-gradient(135deg, #f87171 0%, #ef4444 100%)', 
+                    color: 'white', 
+                    border: 'none', 
+                    borderRadius: '12px', 
+                    cursor: 'pointer', 
+                    boxShadow: '0 4px 12px rgba(248, 113, 113, 0.3)', 
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    minWidth: '60px'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.transform = 'translateY(-2px)'
+                    e.target.style.boxShadow = '0 6px 16px rgba(248, 113, 113, 0.4)'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.transform = 'translateY(0)'
+                    e.target.style.boxShadow = '0 4px 12px rgba(248, 113, 113, 0.3)'
+                  }}
                 >
                   -50
                 </button>
-                <div style={{ flex: 1, textAlign: 'center', backgroundColor: '#2d2d2d', padding: '12px', borderRadius: '6px', border: '2px solid #444' }}>
-                  <div style={{ fontSize: '28px', fontWeight: 'bold', color: '#f5f5f5' }}>{dailyCalorieGoal}</div>
-                  <div style={{ fontSize: '12px', color: '#b0b0b0', marginTop: '2px' }}>
-                    {dailyCalorieGoal < calculatedMaintenance && `(${calculatedMaintenance - dailyCalorieGoal} deficit)`}
-                    {dailyCalorieGoal > calculatedMaintenance && `(+${dailyCalorieGoal - calculatedMaintenance} surplus)`}
+                <div style={{ 
+                  flex: 1, 
+                  textAlign: 'center', 
+                  background: 'rgba(15, 23, 42, 0.5)', 
+                  padding: '18px', 
+                  borderRadius: '14px', 
+                  border: '2px solid rgba(129, 140, 248, 0.2)' 
+                }}>
+                  <div style={{ 
+                    fontSize: '36px', 
+                    fontWeight: '800', 
+                    color: '#f1f5f9',
+                    letterSpacing: '-0.02em' 
+                  }}>
+                    {dailyCalorieGoal}
+                  </div>
+                  <div style={{ 
+                    fontSize: '13px', 
+                    color: '#94a3b8', 
+                    marginTop: '6px', 
+                    fontWeight: '600',
+                    letterSpacing: '0.01em' 
+                  }}>
+                    {dailyCalorieGoal < calculatedMaintenance && `(${calculatedMaintenance - dailyCalorieGoal} cal deficit)`}
+                    {dailyCalorieGoal > calculatedMaintenance && `(+${dailyCalorieGoal - calculatedMaintenance} cal surplus)`}
                     {dailyCalorieGoal === calculatedMaintenance && '(maintenance)'}
                   </div>
                 </div>
                 <button
                   onClick={() => handleAdjustCalories(50)}
-                  style={{ padding: '8px 16px', fontSize: '18px', fontWeight: 'bold', backgroundColor: '#4CAF50', color: 'white', border: 'none', borderRadius: '6px', cursor: 'pointer' }}
+                  style={{ 
+                    padding: '12px 20px', 
+                    fontSize: '20px', 
+                    fontWeight: '700', 
+                    background: 'linear-gradient(135deg, #4ade80 0%, #22c55e 100%)', 
+                    color: 'white', 
+                    border: 'none', 
+                    borderRadius: '12px', 
+                    cursor: 'pointer', 
+                    boxShadow: '0 4px 12px rgba(74, 222, 128, 0.3)', 
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    minWidth: '60px'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.transform = 'translateY(-2px)'
+                    e.target.style.boxShadow = '0 6px 16px rgba(74, 222, 128, 0.4)'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.transform = 'translateY(0)'
+                    e.target.style.boxShadow = '0 4px 12px rgba(74, 222, 128, 0.3)'
+                  }}
                 >
                   +50
                 </button>
               </div>
-              <div style={{ marginTop: '10px', fontSize: '12px', color: '#b0b0b0', textAlign: 'center' }}>
-                💡 -500 cal/day = ~0.5kg/week weight loss | +500 cal/day = ~0.5kg/week weight gain
+              <div style={{ 
+                marginTop: '14px', 
+                fontSize: '13px', 
+                color: '#64748b', 
+                textAlign: 'center', 
+                fontWeight: '500',
+                lineHeight: '1.5' 
+              }}>
+                💡 -500 cal/day = ~0.5kg/week loss | +500 cal/day = ~0.5kg/week gain
               </div>
             </div>
             
             {/* Macro Targets */}
-            <div style={{ backgroundColor: '#2d2d2d', padding: '20px', borderRadius: '8px', marginBottom: '15px', border: '1px solid #444' }}>
-              <h4 style={{ margin: '0 0 15px 0', color: '#f5f5f5', fontSize: '16px' }}>📊 Daily Macro Targets</h4>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '10px', textAlign: 'center' }}>
+            <div style={{ 
+              background: 'rgba(15, 23, 42, 0.5)', 
+              padding: '25px', 
+              borderRadius: '16px', 
+              marginBottom: '20px', 
+              border: '1px solid rgba(148, 163, 184, 0.1)' 
+            }}>
+              <h4 style={{ 
+                margin: '0 0 22px 0', 
+                color: '#f1f5f9', 
+                fontSize: '17px', 
+                fontWeight: '700',
+                letterSpacing: '-0.01em' 
+              }}>
+                📊 Daily Macro Targets
+              </h4>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px', textAlign: 'center' }}>
                 <div>
-                  <div style={{ fontSize: '24px', fontWeight: 'bold', color: '#2196F3' }}>{macroGoals.protein}g</div>
-                  <div style={{ fontSize: '12px', color: '#999', marginTop: '4px' }}>Protein</div>
+                  <div style={{ fontSize: '32px', fontWeight: '800', color: '#60a5fa', letterSpacing: '-0.02em' }}>{macroGoals.protein}g</div>
+                  <div style={{ fontSize: '13px', color: '#94a3b8', marginTop: '8px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Protein</div>
                 </div>
                 <div>
-                  <div style={{ fontSize: '24px', fontWeight: 'bold', color: '#FF9800' }}>{macroGoals.fat}g</div>
-                  <div style={{ fontSize: '12px', color: '#999', marginTop: '4px' }}>Fat</div>
+                  <div style={{ fontSize: '32px', fontWeight: '800', color: '#fb923c', letterSpacing: '-0.02em' }}>{macroGoals.fat}g</div>
+                  <div style={{ fontSize: '13px', color: '#94a3b8', marginTop: '8px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Fat</div>
                 </div>
                 <div>
-                  <div style={{ fontSize: '24px', fontWeight: 'bold', color: '#4CAF50' }}>{macroGoals.carbs}g</div>
-                  <div style={{ fontSize: '12px', color: '#999', marginTop: '4px' }}>Carbs</div>
+                  <div style={{ fontSize: '32px', fontWeight: '800', color: '#4ade80', letterSpacing: '-0.02em' }}>{macroGoals.carbs}g</div>
+                  <div style={{ fontSize: '13px', color: '#94a3b8', marginTop: '8px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Carbs</div>
                 </div>
               </div>
             </div>
             
             <button
               onClick={handleSaveSettings}
-              style={{ width: '100%', padding: '14px', fontSize: '18px', fontWeight: 'bold', color: 'white', backgroundColor: '#4CAF50', border: 'none', borderRadius: '8px', cursor: 'pointer', marginTop: '15px' }}
+              style={{ 
+                width: '100%', 
+                padding: '18px', 
+                fontSize: '18px', 
+                fontWeight: '700', 
+                color: 'white', 
+                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', 
+                border: 'none', 
+                borderRadius: '14px', 
+                cursor: 'pointer', 
+                marginTop: '10px', 
+                boxShadow: '0 8px 24px rgba(102, 126, 234, 0.3)', 
+                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                letterSpacing: '0.01em'
+              }}
+              onMouseEnter={(e) => { 
+                e.target.style.transform = 'translateY(-2px)'
+                e.target.style.boxShadow = '0 12px 32px rgba(102, 126, 234, 0.4)' 
+              }}
+              onMouseLeave={(e) => { 
+                e.target.style.transform = 'translateY(0)'
+                e.target.style.boxShadow = '0 8px 24px rgba(102, 126, 234, 0.3)' 
+              }}
             >
               Save & Start Tracking →
             </button>
           </div>
         )}
+        </div>
       </div>
     )
   }
 
   // Main Food Logging Page
   return (
-    <div style={{ maxWidth: '600px', margin: '0 auto', padding: '20px', fontFamily: 'system-ui, -apple-system, sans-serif', backgroundColor: '#121212', minHeight: '100vh' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-        <h1 style={{ margin: 0, color: '#f5f5f5' }}>Macro Tracker</h1>
-        <button
-          onClick={handleResetSettings}
-          style={{ padding: '6px 12px', fontSize: '12px', backgroundColor: '#555', color: 'white', border: '1px solid #666', borderRadius: '4px', cursor: 'pointer' }}
-        >
-          ⚙️ Reset
-        </button>
-      </div>
+    <div style={{ 
+      minHeight: '100vh', 
+      background: '#0a0e1a', 
+      fontFamily: 'system-ui, -apple-system, sans-serif', 
+      padding: '20px',
+      position: 'relative',
+      overflow: 'hidden'
+    }}>
+      {/* Background Orbs */}
+      <div style={{ 
+        position: 'absolute', 
+        top: '10%', 
+        left: '-10%', 
+        width: '500px', 
+        height: '500px', 
+        background: 'radial-gradient(circle, rgba(102, 126, 234, 0.08) 0%, transparent 70%)',
+        borderRadius: '50%',
+        filter: 'blur(70px)',
+        animation: 'pulse 8s ease-in-out infinite'
+      }}></div>
+      <div style={{ 
+        position: 'absolute', 
+        bottom: '20%', 
+        right: '-10%', 
+        width: '450px', 
+        height: '450px', 
+        background: 'radial-gradient(circle, rgba(251, 146, 60, 0.06) 0%, transparent 70%)',
+        borderRadius: '50%',
+        filter: 'blur(70px)',
+        animation: 'pulse 10s ease-in-out infinite'
+      }}></div>
+
+      <div style={{ maxWidth: '600px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px' }}>
+          <h1 style={{ 
+            margin: 0, 
+            color: '#ffffff', 
+            fontSize: '32px', 
+            fontWeight: '800',
+            letterSpacing: '-0.02em',
+            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text'
+          }}>
+            Macro Tracker
+          </h1>
+          <button
+            onClick={handleResetSettings}
+            style={{ 
+              padding: '10px 18px', 
+              fontSize: '14px', 
+              background: 'rgba(30, 41, 59, 0.6)', 
+              backdropFilter: 'blur(10px)',
+              color: '#cbd5e1', 
+              border: '1px solid rgba(148, 163, 184, 0.2)', 
+              borderRadius: '10px', 
+              cursor: 'pointer', 
+              fontWeight: '600', 
+              boxShadow: '0 4px 12px rgba(0,0,0,0.3)', 
+              transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.background = 'rgba(30, 41, 59, 0.8)'
+              e.target.style.borderColor = 'rgba(129, 140, 248, 0.4)'
+              e.target.style.transform = 'translateY(-2px)'
+              e.target.style.boxShadow = '0 6px 16px rgba(0,0,0,0.4)'
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.background = 'rgba(30, 41, 59, 0.6)'
+              e.target.style.borderColor = 'rgba(148, 163, 184, 0.2)'
+              e.target.style.transform = 'translateY(0)'
+              e.target.style.boxShadow = '0 4px 12px rgba(0,0,0,0.3)'
+            }}
+          >
+            ⚙️ Reset Settings
+          </button>
+        </div>
       
       {/* Daily Calorie Tracker */}
-      <div style={{ backgroundColor: '#1a2332', padding: '20px', borderRadius: '8px', marginBottom: '20px', border: '2px solid #2196F3' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '15px', textAlign: 'center' }}>
+      <div style={{ 
+        background: 'rgba(30, 41, 59, 0.6)', 
+        backdropFilter: 'blur(20px)',
+        padding: '32px', 
+        borderRadius: '20px', 
+        marginBottom: '20px', 
+        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)', 
+        border: '1px solid rgba(148, 163, 184, 0.1)' 
+      }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '20px', textAlign: 'center' }}>
           <div>
-            <div style={{ fontSize: '24px', fontWeight: 'bold', color: '#90caf9' }}>{dailyCalorieGoal}</div>
-            <div style={{ fontSize: '12px', color: '#b0b0b0', marginTop: '4px' }}>Goal</div>
+            <div style={{ 
+              fontSize: '32px', 
+              fontWeight: '800', 
+              color: '#818cf8',
+              letterSpacing: '-0.02em' 
+            }}>
+              {dailyCalorieGoal}
+            </div>
+            <div style={{ 
+              fontSize: '13px', 
+              color: '#94a3b8', 
+              marginTop: '8px', 
+              fontWeight: '600',
+              textTransform: 'uppercase',
+              letterSpacing: '0.05em' 
+            }}>
+              Goal
+            </div>
           </div>
           <div>
-            <div style={{ fontSize: '24px', fontWeight: 'bold', color: '#ffb74d' }}>{todayTotalCalories}</div>
-            <div style={{ fontSize: '12px', color: '#b0b0b0', marginTop: '4px' }}>Consumed</div>
+            <div style={{ 
+              fontSize: '32px', 
+              fontWeight: '800', 
+              color: '#fb923c',
+              letterSpacing: '-0.02em' 
+            }}>
+              {todayTotalCalories}
+            </div>
+            <div style={{ 
+              fontSize: '13px', 
+              color: '#94a3b8', 
+              marginTop: '8px', 
+              fontWeight: '600',
+              textTransform: 'uppercase',
+              letterSpacing: '0.05em' 
+            }}>
+              Consumed
+            </div>
           </div>
           <div>
-            <div style={{ fontSize: '24px', fontWeight: 'bold', color: remainingCalories >= 0 ? '#81c784' : '#e57373' }}>{remainingCalories}</div>
-            <div style={{ fontSize: '12px', color: '#b0b0b0', marginTop: '4px' }}>Remaining</div>
+            <div style={{ 
+              fontSize: '32px', 
+              fontWeight: '800', 
+              color: remainingCalories >= 0 ? '#4ade80' : '#f87171',
+              letterSpacing: '-0.02em' 
+            }}>
+              {remainingCalories}
+            </div>
+            <div style={{ 
+              fontSize: '13px', 
+              color: '#94a3b8', 
+              marginTop: '8px', 
+              fontWeight: '600',
+              textTransform: 'uppercase',
+              letterSpacing: '0.05em' 
+            }}>
+              Remaining
+            </div>
           </div>
         </div>
       </div>
       
       {/* Macro Tracker */}
       {macroGoals.protein > 0 && (
-        <div style={{ backgroundColor: '#1e1e1e', padding: '20px', borderRadius: '8px', marginBottom: '20px', border: '1px solid #333' }}>
-          <h3 style={{ marginTop: 0, marginBottom: '15px', color: '#f5f5f5', fontSize: '16px' }}>📊 Macros Today</h3>
+        <div style={{ 
+          background: 'rgba(30, 41, 59, 0.6)', 
+          backdropFilter: 'blur(20px)',
+          padding: '32px', 
+          borderRadius: '20px', 
+          marginBottom: '20px', 
+          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)', 
+          border: '1px solid rgba(148, 163, 184, 0.1)' 
+        }}>
+          <h3 style={{ 
+            marginTop: 0, 
+            marginBottom: '24px', 
+            color: '#f1f5f9', 
+            fontSize: '19px', 
+            fontWeight: '700',
+            letterSpacing: '-0.01em' 
+          }}>
+            📊 Macros Today
+          </h3>
           
           {/* Protein */}
-          <div style={{ marginBottom: '12px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px', fontSize: '14px' }}>
-              <span style={{ fontWeight: '500', color: '#64b5f6' }}>Protein</span>
-              <span style={{ color: '#b0b0b0' }}>{Math.round(todayTotalMacros.protein)}g / {macroGoals.protein}g</span>
+          <div style={{ marginBottom: '16px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '14px' }}>
+              <span style={{ fontWeight: '600', color: '#60a5fa' }}>Protein</span>
+              <span style={{ color: '#94a3b8', fontWeight: '500' }}>{Math.round(todayTotalMacros.protein)}g / {macroGoals.protein}g</span>
             </div>
-            <div style={{ width: '100%', height: '8px', backgroundColor: '#333', borderRadius: '4px', overflow: 'hidden' }}>
+            <div style={{ width: '100%', height: '10px', backgroundColor: '#334155', borderRadius: '6px', overflow: 'hidden' }}>
               <div style={{ 
                 width: `${Math.min(100, (todayTotalMacros.protein / macroGoals.protein) * 100)}%`, 
                 height: '100%', 
-                backgroundColor: '#2196F3',
+                background: 'linear-gradient(90deg, #60a5fa 0%, #818cf8 100%)',
                 transition: 'width 0.3s ease'
               }}></div>
             </div>
           </div>
           
           {/* Fat */}
-          <div style={{ marginBottom: '12px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px', fontSize: '14px' }}>
-              <span style={{ fontWeight: '500', color: '#ffb74d' }}>Fat</span>
-              <span style={{ color: '#b0b0b0' }}>{Math.round(todayTotalMacros.fat)}g / {macroGoals.fat}g</span>
+          <div style={{ marginBottom: '16px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '14px' }}>
+              <span style={{ fontWeight: '600', color: '#fb923c' }}>Fat</span>
+              <span style={{ color: '#94a3b8', fontWeight: '500' }}>{Math.round(todayTotalMacros.fat)}g / {macroGoals.fat}g</span>
             </div>
-            <div style={{ width: '100%', height: '8px', backgroundColor: '#333', borderRadius: '4px', overflow: 'hidden' }}>
+            <div style={{ width: '100%', height: '10px', backgroundColor: '#334155', borderRadius: '6px', overflow: 'hidden' }}>
               <div style={{ 
                 width: `${Math.min(100, (todayTotalMacros.fat / macroGoals.fat) * 100)}%`, 
                 height: '100%', 
-                backgroundColor: '#FF9800',
+                background: 'linear-gradient(90deg, #fb923c 0%, #fdba74 100%)',
                 transition: 'width 0.3s ease'
               }}></div>
             </div>
@@ -890,15 +1443,15 @@ function App() {
           
           {/* Carbs */}
           <div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px', fontSize: '14px' }}>
-              <span style={{ fontWeight: '500', color: '#81c784' }}>Carbs</span>
-              <span style={{ color: '#b0b0b0' }}>{Math.round(todayTotalMacros.carbs)}g / {macroGoals.carbs}g</span>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '14px' }}>
+              <span style={{ fontWeight: '600', color: '#4ade80' }}>Carbs</span>
+              <span style={{ color: '#94a3b8', fontWeight: '500' }}>{Math.round(todayTotalMacros.carbs)}g / {macroGoals.carbs}g</span>
             </div>
-            <div style={{ width: '100%', height: '8px', backgroundColor: '#333', borderRadius: '4px', overflow: 'hidden' }}>
+            <div style={{ width: '100%', height: '10px', backgroundColor: '#334155', borderRadius: '6px', overflow: 'hidden' }}>
               <div style={{ 
                 width: `${Math.min(100, (todayTotalMacros.carbs / macroGoals.carbs) * 100)}%`, 
                 height: '100%', 
-                backgroundColor: '#4CAF50',
+                background: 'linear-gradient(90deg, #4ade80 0%, #86efac 100%)',
                 transition: 'width 0.3s ease'
               }}></div>
             </div>
@@ -907,43 +1460,113 @@ function App() {
       )}
 
       <form onSubmit={handleSubmit} style={{ marginBottom: '30px' }}>
-        <div style={{ backgroundColor: '#2a2416', padding: '10px', borderRadius: '6px', marginBottom: '10px', fontSize: '13px', color: '#ffb74d', border: '1px solid #5a4a2a' }}>
-          💡 <strong>Tip:</strong> Type "5 eggs" or "100g chicken" to specify quantity, or just "eggs" to use the default below.
+        <div style={{ 
+          background: 'rgba(251, 146, 60, 0.1)', 
+          padding: '16px', 
+          borderRadius: '12px', 
+          marginBottom: '18px', 
+          fontSize: '14px', 
+          color: '#fb923c', 
+          border: '1px solid rgba(251, 146, 60, 0.2)',
+          backdropFilter: 'blur(10px)'
+        }}>
+          💡 <strong style={{ fontWeight: '700' }}>Tip:</strong> Type "5 eggs" or "100g chicken" to specify quantity, or just "eggs" to use the default below.
         </div>
+        
         <input 
           type="text" 
           value={input} 
           onChange={(e) => setInput(e.target.value)} 
           placeholder="Type: '2 eggs' or '100g chicken' (with quantity) OR just 'chicken' (uses dropdown)" 
           disabled={loading}
-          style={{ width: '100%', padding: '12px', fontSize: '16px', border: '2px solid #444', borderRadius: '8px', marginBottom: '10px', boxSizing: 'border-box', backgroundColor: '#2d2d2d', color: '#f5f5f5' }} 
+          style={{ 
+            width: '100%', 
+            padding: '14px 18px', 
+            fontSize: '16px', 
+            border: '2px solid rgba(51, 65, 85, 0.6)', 
+            borderRadius: '12px', 
+            marginBottom: '16px', 
+            boxSizing: 'border-box', 
+            background: 'rgba(15, 23, 42, 0.5)', 
+            color: '#f1f5f9',
+            transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+            outline: 'none'
+          }} 
+          onFocus={(e) => {
+            e.target.style.borderColor = '#818cf8'
+            e.target.style.background = 'rgba(15, 23, 42, 0.8)'
+            e.target.style.boxShadow = '0 0 0 4px rgba(129, 140, 248, 0.1)'
+          }}
+          onBlur={(e) => {
+            e.target.style.borderColor = 'rgba(51, 65, 85, 0.6)'
+            e.target.style.background = 'rgba(15, 23, 42, 0.5)'
+            e.target.style.boxShadow = 'none'
+          }}
         />
-        <div style={{ display: 'flex', gap: '10px', alignItems: 'center', marginBottom: '10px' }}>
-          <label style={{ fontSize: '14px', color: '#b0b0b0', whiteSpace: 'nowrap' }}>
-            Default quantity (when not specified):
+        
+        <div style={{ 
+          display: 'flex', 
+          gap: '14px', 
+          alignItems: 'center', 
+          marginBottom: '18px' 
+        }}>
+          <label style={{ 
+            fontSize: '14px', 
+            color: '#cbd5e1', 
+            whiteSpace: 'nowrap',
+            fontWeight: '600'
+          }}>
+            Default quantity:
           </label>
           <select 
             value={quantityPreset} 
             onChange={(e) => setQuantityPreset(e.target.value)} 
             disabled={loading}
-            style={{ flex: 1, padding: '8px', fontSize: '14px', border: '1px solid #444', borderRadius: '6px', backgroundColor: '#2d2d2d', color: '#f5f5f5', cursor: 'pointer' }}
+            style={{ 
+              flex: 1, 
+              padding: '12px 18px', 
+              paddingRight: '45px',
+              fontSize: '15px', 
+              border: '2px solid rgba(51, 65, 85, 0.6)', 
+              borderRadius: '12px', 
+              background: 'rgba(15, 23, 42, 0.5)', 
+              color: '#f1f5f9', 
+              cursor: 'pointer',
+              appearance: 'none',
+              backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2394a3b8'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`,
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: 'right 18px center',
+              backgroundSize: '20px',
+              transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+              outline: 'none'
+            }}
+            onFocus={(e) => {
+              e.target.style.borderColor = '#818cf8'
+              e.target.style.background = 'rgba(15, 23, 42, 0.8)'
+              e.target.style.boxShadow = '0 0 0 4px rgba(129, 140, 248, 0.1)'
+            }}
+            onBlur={(e) => {
+              e.target.style.borderColor = 'rgba(51, 65, 85, 0.6)'
+              e.target.style.background = 'rgba(15, 23, 42, 0.5)'
+              e.target.style.boxShadow = 'none'
+            }}
           >
-            <optgroup label="Servings">
-              <option value="1serving">1 serving</option>
-              <option value="2serving">2 servings</option>
-              <option value="3serving">3 servings</option>
+            <optgroup label="Servings" style={{ background: '#0f172a', color: '#f1f5f9' }}>
+              <option value="1serving" style={{ background: '#0f172a', color: '#f1f5f9' }}>1 serving</option>
+              <option value="2serving" style={{ background: '#0f172a', color: '#f1f5f9' }}>2 servings</option>
+              <option value="3serving" style={{ background: '#0f172a', color: '#f1f5f9' }}>3 servings</option>
             </optgroup>
-            <optgroup label="Grams">
-              <option value="50g">50g</option>
-              <option value="100g">100g</option>
-              <option value="150g">150g</option>
-              <option value="200g">200g</option>
-              <option value="250g">250g</option>
+            <optgroup label="Grams" style={{ background: '#0f172a', color: '#f1f5f9' }}>
+              <option value="50g" style={{ background: '#0f172a', color: '#f1f5f9' }}>50g</option>
+              <option value="100g" style={{ background: '#0f172a', color: '#f1f5f9' }}>100g</option>
+              <option value="150g" style={{ background: '#0f172a', color: '#f1f5f9' }}>150g</option>
+              <option value="200g" style={{ background: '#0f172a', color: '#f1f5f9' }}>200g</option>
+              <option value="250g" style={{ background: '#0f172a', color: '#f1f5f9' }}>250g</option>
             </optgroup>
-            <optgroup label="Pieces">
-              <option value="1piece">1 piece</option>
-              <option value="2piece">2 pieces</option>
-              <option value="3piece">3 pieces</option>
+            <optgroup label="Pieces" style={{ background: '#0f172a', color: '#f1f5f9' }}>
+              <option value="1piece" style={{ background: '#0f172a', color: '#f1f5f9' }}>1 piece</option>
+              <option value="2piece" style={{ background: '#0f172a', color: '#f1f5f9' }}>2 pieces</option>
+              <option value="3piece" style={{ background: '#0f172a', color: '#f1f5f9' }}>3 pieces</option>
             </optgroup>
             <optgroup label="Scoops">
               <option value="1scoop">1 scoop</option>
@@ -956,40 +1579,167 @@ function App() {
             </optgroup>
           </select>
         </div>
-        <button type="submit" disabled={loading || !input.trim()} style={{ width: '100%', padding: '12px', fontSize: '16px', fontWeight: 'bold', color: 'white', backgroundColor: loading || !input.trim() ? '#ccc' : '#4CAF50', border: 'none', borderRadius: '8px', cursor: loading || !input.trim() ? 'not-allowed' : 'pointer' }}>
-          {loading ? 'Loading...' : 'Log Food'}
+        
+        <button 
+          type="submit" 
+          disabled={loading || !input.trim()} 
+          style={{ 
+            width: '100%', 
+            padding: '16px', 
+            fontSize: '17px', 
+            fontWeight: '700', 
+            color: 'white', 
+            background: loading || !input.trim() 
+              ? 'rgba(51, 65, 85, 0.5)' 
+              : 'linear-gradient(135deg, #4ade80 0%, #22c55e 100%)', 
+            border: 'none', 
+            borderRadius: '14px', 
+            cursor: loading || !input.trim() ? 'not-allowed' : 'pointer',
+            boxShadow: loading || !input.trim() 
+              ? 'none' 
+              : '0 8px 24px rgba(74, 222, 128, 0.3)',
+            transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+            letterSpacing: '0.01em'
+          }}
+          onMouseEnter={(e) => {
+            if (!loading && input.trim()) {
+              e.target.style.transform = 'translateY(-2px)'
+              e.target.style.boxShadow = '0 12px 32px rgba(74, 222, 128, 0.4)'
+            }
+          }}
+          onMouseLeave={(e) => {
+            if (!loading && input.trim()) {
+              e.target.style.transform = 'translateY(0)'
+              e.target.style.boxShadow = '0 8px 24px rgba(74, 222, 128, 0.3)'
+            }
+          }}
+        >
+          {loading ? '⏳ Loading...' : '✓ Log Food'}
         </button>
       </form>
 
       {result && (
-        <div style={{ backgroundColor: '#1e1e1e', padding: '20px', borderRadius: '8px', marginBottom: '30px', border: '1px solid #333' }}>
-          <h2 style={{ marginTop: 0, color: '#f5f5f5' }}>✓ Meal Logged</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginBottom: '20px' }}>
+        <div style={{ 
+          background: 'rgba(30, 41, 59, 0.6)', 
+          backdropFilter: 'blur(20px)',
+          padding: '32px', 
+          borderRadius: '20px', 
+          marginBottom: '30px', 
+          border: '1px solid rgba(148, 163, 184, 0.1)',
+          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)'
+        }}>
+          <h2 style={{ 
+            marginTop: 0, 
+            marginBottom: '24px', 
+            color: '#4ade80', 
+            fontSize: '22px', 
+            fontWeight: '700',
+            letterSpacing: '-0.01em' 
+          }}>
+            ✓ Meal Logged
+          </h2>
+          
+          <div style={{ 
+            display: 'grid', 
+            gridTemplateColumns: '1fr 1fr', 
+            gap: '14px', 
+            marginBottom: '28px' 
+          }}>
             {[
-              { label: 'Calories', value: result.totals.calories, color: '#81c784' }, 
-              { label: 'Protein', value: result.totals.protein + 'g', color: '#64b5f6' }, 
-              { label: 'Carbs', value: result.totals.carbs + 'g', color: '#ffb74d' }, 
-              { label: 'Fats', value: result.totals.fats + 'g', color: '#f06292' }
+              { label: 'Calories', value: result.totals.calories, color: '#4ade80' }, 
+              { label: 'Protein', value: result.totals.protein + 'g', color: '#60a5fa' }, 
+              { label: 'Carbs', value: result.totals.carbs + 'g', color: '#fb923c' }, 
+              { label: 'Fats', value: result.totals.fats + 'g', color: '#f87171' }
             ].map((item, i) => (
-              <div key={i} style={{ backgroundColor: '#2d2d2d', padding: '15px', borderRadius: '8px', textAlign: 'center', border: '1px solid #444' }}>
-                <div style={{ fontSize: '24px', fontWeight: 'bold', color: item.color }}>{item.value}</div>
-                <div style={{ fontSize: '14px', color: '#b0b0b0' }}>{item.label}</div>
+              <div key={i} style={{ 
+                background: 'rgba(15, 23, 42, 0.5)', 
+                padding: '20px', 
+                borderRadius: '14px', 
+                textAlign: 'center', 
+                border: '1px solid rgba(148, 163, 184, 0.1)' 
+              }}>
+                <div style={{ 
+                  fontSize: '32px', 
+                  fontWeight: '800', 
+                  color: item.color,
+                  letterSpacing: '-0.02em' 
+                }}>
+                  {item.value}
+                </div>
+                <div style={{ 
+                  fontSize: '13px', 
+                  color: '#94a3b8', 
+                  marginTop: '6px',
+                  fontWeight: '600',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05em' 
+                }}>
+                  {item.label}
+                </div>
               </div>
             ))}
           </div>
-          <h3 style={{ marginBottom: '10px', color: '#f5f5f5' }}>Foods:</h3>
+          
+          <h3 style={{ 
+            marginBottom: '16px', 
+            color: '#f1f5f9', 
+            fontSize: '17px', 
+            fontWeight: '700',
+            letterSpacing: '-0.01em' 
+          }}>
+            Foods:
+          </h3>
           {result.foods.map((food, i) => (
-            <div key={i} style={{ backgroundColor: '#2d2d2d', padding: '10px', borderRadius: '4px', marginBottom: '8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', border: '1px solid #444' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-                <strong style={{ color: '#f5f5f5' }}>{food.quantity}{food.unit} {food.name}</strong>
+            <div key={i} style={{ 
+              background: 'rgba(15, 23, 42, 0.5)', 
+              padding: '16px', 
+              borderRadius: '12px', 
+              marginBottom: '10px', 
+              display: 'flex', 
+              justifyContent: 'space-between', 
+              alignItems: 'center', 
+              border: '1px solid rgba(148, 163, 184, 0.1)' 
+            }}>
+              <div style={{ 
+                display: 'flex', 
+                alignItems: 'center', 
+                gap: '10px', 
+                flexWrap: 'wrap' 
+              }}>
+                <strong style={{ color: '#f1f5f9', fontSize: '15px' }}>
+                  {food.quantity}{food.unit} {food.name}
+                </strong>
                 {food.usedDefault && (
-                  <span style={{ fontSize: '11px', backgroundColor: '#1a2a3a', color: '#64b5f6', padding: '2px 6px', borderRadius: '3px', border: '1px solid #2196F3' }}>
+                  <span style={{ 
+                    fontSize: '11px', 
+                    background: 'rgba(96, 165, 250, 0.15)', 
+                    color: '#60a5fa', 
+                    padding: '4px 10px', 
+                    borderRadius: '6px', 
+                    border: '1px solid rgba(96, 165, 250, 0.3)',
+                    fontWeight: '600',
+                    letterSpacing: '0.01em'
+                  }}>
                     used default
                   </span>
                 )}
-                {!food.found && <span style={{ color: '#e57373', marginLeft: '10px', fontSize: '12px' }}>Not found</span>}
+                {!food.found && (
+                  <span style={{ 
+                    color: '#f87171', 
+                    fontSize: '13px', 
+                    fontWeight: '600' 
+                  }}>
+                    Not found
+                  </span>
+                )}
               </div>
-              <div style={{ color: '#b0b0b0' }}>{food.calories} cal</div>
+              <div style={{ 
+                color: '#cbd5e1', 
+                fontWeight: '600', 
+                fontSize: '15px' 
+              }}>
+                {food.calories} cal
+              </div>
             </div>
           ))}
         </div>
@@ -997,37 +1747,124 @@ function App() {
 
       {history.length > 0 && (
         <div>
-          <h2 style={{ color: '#f5f5f5' }}>History</h2>
+          <h2 style={{ 
+            color: '#f1f5f9', 
+            marginBottom: '20px', 
+            fontSize: '24px', 
+            fontWeight: '700',
+            letterSpacing: '-0.01em' 
+          }}>
+            📜 History
+          </h2>
           {history.map((meal, mealIndex) => (
-            <div key={meal.id} style={{ backgroundColor: '#1e1e1e', padding: '15px', borderRadius: '8px', marginBottom: '10px', border: '1px solid #333' }}>
-              <div style={{ marginBottom: '8px', color: '#b0b0b0', fontSize: '14px' }}>{new Date(meal.timestamp).toLocaleString()}</div>
-              <div style={{ marginBottom: '8px', fontStyle: 'italic', color: '#e0e0e0' }}>"{meal.input}"</div>
-              <div style={{ display: 'flex', gap: '20px', fontSize: '14px', marginBottom: '12px', color: '#e0e0e0' }}>
-                <span><strong>{meal.totals.calories}</strong> cal</span>
-                <span><strong>{meal.totals.protein}g</strong> protein</span>
-                <span><strong>{meal.totals.carbs}g</strong> carbs</span>
-                <span><strong>{meal.totals.fats}g</strong> fats</span>
+            <div key={meal.id} style={{ 
+              background: 'rgba(30, 41, 59, 0.6)', 
+              backdropFilter: 'blur(20px)',
+              padding: '24px', 
+              borderRadius: '16px', 
+              marginBottom: '16px', 
+              border: '1px solid rgba(148, 163, 184, 0.1)',
+              boxShadow: '0 4px 16px rgba(0, 0, 0, 0.3)'
+            }}>
+              <div style={{ 
+                marginBottom: '12px', 
+                color: '#94a3b8', 
+                fontSize: '13px', 
+                fontWeight: '600' 
+              }}>
+                {new Date(meal.timestamp).toLocaleString()}
+              </div>
+              <div style={{ 
+                marginBottom: '14px', 
+                fontStyle: 'italic', 
+                color: '#cbd5e1', 
+                fontSize: '15px' 
+              }}>
+                "{meal.input}"
+              </div>
+              <div style={{ 
+                display: 'flex', 
+                gap: '24px', 
+                fontSize: '15px', 
+                marginBottom: '16px', 
+                color: '#f1f5f9',
+                flexWrap: 'wrap' 
+              }}>
+                <span style={{ fontWeight: '600' }}>
+                  <span style={{ color: '#4ade80' }}>{meal.totals.calories}</span> cal
+                </span>
+                <span style={{ fontWeight: '600' }}>
+                  <span style={{ color: '#60a5fa' }}>{meal.totals.protein}g</span> protein
+                </span>
+                <span style={{ fontWeight: '600' }}>
+                  <span style={{ color: '#fb923c' }}>{meal.totals.carbs}g</span> carbs
+                </span>
+                <span style={{ fontWeight: '600' }}>
+                  <span style={{ color: '#f87171' }}>{meal.totals.fats}g</span> fats
+                </span>
               </div>
               
               {/* Individual foods with edit/delete */}
-              <div style={{ marginTop: '10px', paddingTop: '10px', borderTop: '1px solid #444' }}>
-                <div style={{ fontSize: '12px', color: '#888', marginBottom: '8px' }}>Foods:</div>
+              <div style={{ 
+                marginTop: '16px', 
+                paddingTop: '16px', 
+                borderTop: '1px solid rgba(148, 163, 184, 0.2)' 
+              }}>
+                <div style={{ 
+                  fontSize: '13px', 
+                  color: '#94a3b8', 
+                  marginBottom: '12px', 
+                  fontWeight: '600',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05em' 
+                }}>
+                  Foods:
+                </div>
                 {meal.foods.map((food, foodIndex) => (
-                  <div key={foodIndex} style={{ backgroundColor: '#2d2d2d', padding: '8px', borderRadius: '4px', marginBottom: '6px', border: '1px solid #444' }}>
+                  <div key={foodIndex} style={{ 
+                    background: 'rgba(15, 23, 42, 0.5)', 
+                    padding: '14px', 
+                    borderRadius: '10px', 
+                    marginBottom: '8px', 
+                    border: '1px solid rgba(148, 163, 184, 0.1)' 
+                  }}>
                     {editingMealIndex === mealIndex && editingFoodIndex === foodIndex ? (
-                      <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap' }}>
+                      <div style={{ 
+                        display: 'flex', 
+                        gap: '10px', 
+                        alignItems: 'center', 
+                        flexWrap: 'wrap' 
+                      }}>
                         <input 
                           type="number" 
                           value={editQuantity} 
                           onChange={(e) => setEditQuantity(e.target.value)} 
                           min="0.1" 
                           step="0.1" 
-                          style={{ width: '70px', padding: '4px', fontSize: '13px', border: '1px solid #444', borderRadius: '4px', backgroundColor: '#1a1a1a', color: '#f5f5f5' }} 
+                          style={{ 
+                            width: '80px', 
+                            padding: '8px 12px', 
+                            fontSize: '14px', 
+                            border: '2px solid rgba(129, 140, 248, 0.4)', 
+                            borderRadius: '8px', 
+                            background: 'rgba(15, 23, 42, 0.8)', 
+                            color: '#f1f5f9',
+                            outline: 'none' 
+                          }} 
                         />
                         <select 
                           value={editUnit} 
                           onChange={(e) => setEditUnit(e.target.value)} 
-                          style={{ padding: '4px', fontSize: '13px', border: '1px solid #444', borderRadius: '4px', backgroundColor: '#1a1a1a', color: '#f5f5f5' }}
+                          style={{ 
+                            padding: '8px 12px', 
+                            fontSize: '14px', 
+                            border: '2px solid rgba(129, 140, 248, 0.4)', 
+                            borderRadius: '8px', 
+                            background: 'rgba(15, 23, 42, 0.8)', 
+                            color: '#f1f5f9',
+                            cursor: 'pointer',
+                            outline: 'none'
+                          }}
                         >
                           <option value="g">g</option>
                           <option value="kg">kg</option>
@@ -1036,43 +1873,157 @@ function App() {
                           <option value="scoop">scoop</option>
                           <option value="piece">piece</option>
                         </select>
-                        <span style={{ flex: '1', minWidth: '80px', fontSize: '13px', color: '#f5f5f5' }}><strong>{food.name}</strong></span>
+                        <span style={{ 
+                          flex: '1', 
+                          minWidth: '100px', 
+                          fontSize: '14px', 
+                          color: '#f1f5f9', 
+                          fontWeight: '600' 
+                        }}>
+                          {food.name}
+                        </span>
                         <button 
                           onClick={() => handleSaveEdit(mealIndex, foodIndex)} 
                           disabled={loading} 
-                          style={{ padding: '4px 8px', fontSize: '12px', backgroundColor: '#4CAF50', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}
+                          style={{ 
+                            padding: '8px 16px', 
+                            fontSize: '13px', 
+                            background: 'linear-gradient(135deg, #4ade80 0%, #22c55e 100%)', 
+                            color: 'white', 
+                            border: 'none', 
+                            borderRadius: '8px', 
+                            cursor: 'pointer',
+                            fontWeight: '600',
+                            boxShadow: '0 2px 8px rgba(74, 222, 128, 0.3)',
+                            transition: 'all 0.2s'
+                          }}
+                          onMouseEnter={(e) => e.target.style.transform = 'translateY(-1px)'}
+                          onMouseLeave={(e) => e.target.style.transform = 'translateY(0)'}
                         >
                           Save
                         </button>
                         <button 
                           onClick={handleCancelEdit} 
-                          style={{ padding: '4px 8px', fontSize: '12px', backgroundColor: '#555', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}
+                          style={{ 
+                            padding: '8px 16px', 
+                            fontSize: '13px', 
+                            background: 'rgba(51, 65, 85, 0.8)', 
+                            color: '#cbd5e1', 
+                            border: '1px solid rgba(148, 163, 184, 0.2)', 
+                            borderRadius: '8px', 
+                            cursor: 'pointer',
+                            fontWeight: '600',
+                            transition: 'all 0.2s'
+                          }}
+                          onMouseEnter={(e) => e.target.style.background = 'rgba(51, 65, 85, 1)'}
+                          onMouseLeave={(e) => e.target.style.background = 'rgba(51, 65, 85, 0.8)'}
                         >
                           Cancel
                         </button>
                       </div>
                     ) : (
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '13px' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
-                          <strong style={{ color: '#f5f5f5' }}>{food.quantity}{food.unit} {food.name}</strong>
+                      <div style={{ 
+                        display: 'flex', 
+                        justifyContent: 'space-between', 
+                        alignItems: 'center', 
+                        fontSize: '14px',
+                        gap: '12px',
+                        flexWrap: 'wrap' 
+                      }}>
+                        <div style={{ 
+                          display: 'flex', 
+                          alignItems: 'center', 
+                          gap: '8px', 
+                          flexWrap: 'wrap',
+                          flex: '1',
+                          minWidth: '200px' 
+                        }}>
+                          <strong style={{ color: '#f1f5f9', fontSize: '15px' }}>
+                            {food.quantity}{food.unit} {food.name}
+                          </strong>
                           {food.usedDefault && (
-                            <span style={{ fontSize: '10px', backgroundColor: '#1a2a3a', color: '#64b5f6', padding: '1px 4px', borderRadius: '2px', border: '1px solid #2196F3' }}>
+                            <span style={{ 
+                              fontSize: '10px', 
+                              background: 'rgba(96, 165, 250, 0.15)', 
+                              color: '#60a5fa', 
+                              padding: '3px 8px', 
+                              borderRadius: '5px', 
+                              border: '1px solid rgba(96, 165, 250, 0.3)',
+                              fontWeight: '600',
+                              letterSpacing: '0.01em'
+                            }}>
                               default
                             </span>
                           )}
-                          {!food.found && <span style={{ color: '#e57373', marginLeft: '8px', fontSize: '11px' }}>Not found</span>}
+                          {!food.found && (
+                            <span style={{ 
+                              color: '#f87171', 
+                              fontSize: '12px', 
+                              fontWeight: '600' 
+                            }}>
+                              Not found
+                            </span>
+                          )}
                         </div>
-                        <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-                          <span style={{ color: '#b0b0b0' }}>{food.calories} cal</span>
+                        <div style={{ 
+                          display: 'flex', 
+                          gap: '10px', 
+                          alignItems: 'center' 
+                        }}>
+                          <span style={{ 
+                            color: '#cbd5e1', 
+                            fontWeight: '600', 
+                            fontSize: '15px',
+                            minWidth: '65px',
+                            textAlign: 'right'
+                          }}>
+                            {food.calories} cal
+                          </span>
                           <button 
                             onClick={() => handleEdit(mealIndex, foodIndex)} 
-                            style={{ padding: '3px 6px', fontSize: '11px', backgroundColor: '#2196F3', color: 'white', border: 'none', borderRadius: '3px', cursor: 'pointer' }}
+                            style={{ 
+                              padding: '6px 12px', 
+                              fontSize: '12px', 
+                              background: 'rgba(96, 165, 250, 0.2)', 
+                              color: '#60a5fa', 
+                              border: '1px solid rgba(96, 165, 250, 0.3)', 
+                              borderRadius: '6px', 
+                              cursor: 'pointer',
+                              fontWeight: '600',
+                              transition: 'all 0.2s'
+                            }}
+                            onMouseEnter={(e) => {
+                              e.target.style.background = 'rgba(96, 165, 250, 0.3)'
+                              e.target.style.transform = 'translateY(-1px)'
+                            }}
+                            onMouseLeave={(e) => {
+                              e.target.style.background = 'rgba(96, 165, 250, 0.2)'
+                              e.target.style.transform = 'translateY(0)'
+                            }}
                           >
                             Edit
                           </button>
                           <button 
                             onClick={() => handleDeleteFood(mealIndex, foodIndex)} 
-                            style={{ padding: '3px 6px', fontSize: '11px', backgroundColor: '#f44336', color: 'white', border: 'none', borderRadius: '3px', cursor: 'pointer' }}
+                            style={{ 
+                              padding: '6px 12px', 
+                              fontSize: '12px', 
+                              background: 'rgba(248, 113, 113, 0.2)', 
+                              color: '#f87171', 
+                              border: '1px solid rgba(248, 113, 113, 0.3)', 
+                              borderRadius: '6px', 
+                              cursor: 'pointer',
+                              fontWeight: '600',
+                              transition: 'all 0.2s'
+                            }}
+                            onMouseEnter={(e) => {
+                              e.target.style.background = 'rgba(248, 113, 113, 0.3)'
+                              e.target.style.transform = 'translateY(-1px)'
+                            }}
+                            onMouseLeave={(e) => {
+                              e.target.style.background = 'rgba(248, 113, 113, 0.2)'
+                              e.target.style.transform = 'translateY(0)'
+                            }}
                           >
                             Delete
                           </button>
@@ -1086,6 +2037,7 @@ function App() {
           ))}
         </div>
       )}
+      </div>
     </div>
   )
 }
